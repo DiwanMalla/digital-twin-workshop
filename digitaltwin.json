@@ -1,0 +1,265 @@
+{
+  "personal": {
+    "name": "Diwan Malla",
+    "title": "Full-Stack Developer",
+    "location": "Sydney, Australia",
+    "summary": "Full Stack developer specializing in React.js, Material UI, and UX-driven design. Certified IBM Full Stack Development and Meta Front-End Specialization. Experienced in building responsive web applications, improving UI performance, and collaborating with cross-functional teams to deliver exceptional digital experiences.",
+    "elevator_pitch": "Hi, I'm Diwan, a Full-Stack Developer focused on creating high-performance, intuitive user interfaces and AI-powered web applications. I combine strong front-end skills with backend expertise to deliver scalable and efficient solutions.",
+    "contact": {
+      "phone": "+61-0452140630",
+      "email": "malladipin@gmail.com",
+      "linkedin": "https://www.linkedin.com/in/diwanmalla/",
+      "github": "https://github.com/diwanmalla",
+      "portfolio": "https://www.diwanmalla.com.au"
+    }
+  },
+  "salary_location": {
+    "current_salary": "$85,000 - $95,000 AUD",
+    "salary_expectations": "$95,000 - $115,000 AUD based on role complexity",
+    "location_preferences": ["Sydney CBD", "Remote", "Hybrid"],
+    "relocation_willing": true,
+    "remote_experience": "3+ years remote collaboration experience",
+    "travel_availability": "Available for interstate travel up to 25%",
+    "work_authorization": "Australian Citizen / Permanent Resident"
+  },
+  "experience": [
+    {
+      "company": "Barnamala Tech",
+      "title": "Full-Stack Developer",
+      "duration": "Feb 2025 – Present",
+      "company_context": "Tech startup focusing on SaaS applications and UX-driven web solutions",
+      "team_structure": "Collaborated with designers and stakeholders in an agile team",
+      "achievements_star": [
+        {
+          "situation": "Need for responsive and efficient UI components",
+          "task": "Improve UI load and responsiveness",
+          "action": "Developed React and Material UI components, optimized performance",
+          "result": "Enhanced load speed and improved user satisfaction metrics"
+        },
+        {
+          "situation": "Manual deployment slowing releases",
+          "task": "Automate deployment process",
+          "action": "Built CI/CD pipelines using GitHub Actions",
+          "result": "Reduced deployment time by 40%"
+        }
+      ],
+      "technical_skills_used": ["Next.js", "React", "Material UI", "Python (Flask)", "MongoDB", "AWS", "GitHub Actions", "NextAuth", "JWT"],
+      "leadership_examples": ["Collaborated cross-functionally", "Led UI/UX optimization discussions"],
+      "team_size_managed": 2
+    },
+    {
+      "company": "Hamro Chautari",
+      "title": "Junior Web Developer",
+      "duration": "April 2023 – Nov 2024",
+      "company_context": "Client-focused web development and SaaS solutions",
+      "achievements_star": [
+        {
+          "situation": "Client applications lacked UX consistency",
+          "task": "Improve engagement and UI consistency",
+          "action": "Developed front-end using React, Next.js, Tailwind CSS and integrated APIs with PostgreSQL",
+          "result": "Boosted engagement metrics by 25%"
+        }
+      ],
+      "technical_skills_used": ["React", "Next.js", "Tailwind CSS", "Node.js", "Express", "PostgreSQL", "AWS", "Vercel", "CI/CD"],
+      "team_size_managed": 1
+    },
+    {
+      "company": "Bihani Tech",
+      "title": "Front-End Web Developer",
+      "duration": "Sep 2021 – Aug 2022",
+      "company_context": "Local web development projects and WordPress customizations",
+      "achievements_star": [
+        {
+          "situation": "Existing front-end had low user satisfaction",
+          "task": "Improve front-end performance and UX",
+          "action": "Delivered React.js and Bootstrap front-end systems, customized WordPress sites",
+          "result": "Improved UI satisfaction by 35%"
+        }
+      ],
+      "technical_skills_used": ["JavaScript", "React.js", "Bootstrap", "WordPress", "Git", "HTML5", "CSS3", "REST APIs"]
+    },
+    {
+      "company": "Adira Tech",
+      "title": "Web Developer Intern",
+      "duration": "Nov 2020 – Jul 2021",
+      "achievements_star": [
+        {
+          "situation": "Assist in front-end development tasks",
+          "task": "Support senior developers",
+          "action": "Debugged UI issues, developed small internal projects using JavaScript and Bootstrap",
+          "result": "Improved front-end stability and gained hands-on Agile experience"
+        }
+      ],
+      "technical_skills_used": ["JavaScript", "React.js", "Bootstrap", "WordPress", "Git"]
+    }
+  ],
+  "projects_portfolio": [
+    {
+      "name": "Job Tracker – Application Management System",
+      "duration": "Oct 2025",
+      "description": "Full-stack job tracking platform with analytics dashboard and secure document management.",
+      "technologies": ["Next.js 15", "PostgreSQL", "Vercel Blob Storage", "React"],
+      "impact": "Served 10+ active users, streamlined resume/cover letter management for recruiters"
+    },
+    {
+      "name": "PDFly – Professional PDF Processing Platform",
+      "duration": "Aug 2025 - Oct 2025",
+      "description": "PDF APIs for secure processing and file encryption",
+      "technologies": ["Python", "React"],
+      "impact": "Processes 100+ documents daily, improved user satisfaction by 45%"
+    },
+    {
+      "name": "SangeetX – Music Streaming Platform",
+      "duration": "July 2025 - Sep 2025",
+      "description": "Full-stack streaming app with admin dashboard",
+      "technologies": ["Next.js", "TypeScript", "Cloudinary"],
+      "impact": "Serves 50+ users, reduced admin time by 60%, improved media loading speed by 50%"
+    },
+    {
+      "name": "BrainiX – AI Powered LMS",
+      "duration": "Feb 2025 - June 2025",
+      "description": "AI-driven learning platform with real-time chat and Stripe payments",
+      "technologies": ["Next.js", "React", "OpenAI APIs", "Pusher", "Stripe API"],
+      "impact": "Led 3-member team, increased engagement by 300%, achieved 94.7% course completion rate"
+    }
+  ],
+  "skills": {
+    "frontend": ["React 19", "Next.js 15", "Tailwind CSS", "Material UI", "Typescript", "Redux", "JavaScript (ES6+)"],
+    "backend": ["Node.js", "Express", "Python (Flask)", "REST APIs"],
+    "databases": ["MongoDB", "PostgreSQL", "MySQL"],
+    "cloud_devops": ["AWS (S3, EC2)", "Git/GitHub", "CI/CD"],
+    "ui_ux_tools": ["Figma", "Adobe XD", "Responsive Design", "Accessibility", "Design Systems"],
+    "soft_skills": ["Agile workflow", "UX research", "Wireframing", "Prototyping", "Cross-functional collaboration"]
+  },
+  "education": {
+    "university": "Victoria University Sydney",
+    "degree": "Bachelor of Information Technology",
+    "graduation_year": 2025,
+    "location": "Sydney, Australia"
+  },
+  "career_goals": {
+    "short_term": "Full-Stack Developer/Technical Lead role focusing on SaaS and AI-powered web applications",
+    "long_term": "Head of Engineering or Product Development in an AI/ML driven company",
+    "learning_focus": ["Advanced React & Next.js patterns", "AI/ML integration", "System scalability", "Team leadership"],
+    "industries_interested": ["SaaS", "AI/ML", "Enterprise solutions"]
+  },
+  "interview_prep": {
+    "behavioral_questions": [
+      "Describe a challenging project and how you overcame technical hurdles.",
+      "How do you prioritize tasks under tight deadlines?",
+      "Give an example of mentoring or helping a teammate improve."
+    ],
+    "technical_questions": [
+      "Explain your approach to building a full-stack SaaS platform.",
+      "How would you optimize React components for performance?",
+      "Describe integrating AI APIs like OpenAI into a production system."
+    ],
+    "situational_questions": [
+      "How would you respond to a critical bug affecting production?",
+      "How would you handle conflicting requirements from stakeholders?",
+      "Describe how you would implement a new feature with minimal disruption."
+    ]
+  },
+
+  "professional_development": {
+    "certifications": ["IBM Full Stack Developer", "Meta Front-End Specialization"],
+    "recent_learning": ["Advanced React patterns", "Next.js 15 features", "AI API integrations"],
+    "conferences_attended": ["PyCon Australia 2024", "AWS re:Invent 2023"],
+    "publications": ["Blog: Building Production RAG Systems with Upstash Vector"],
+    "open_source": ["Contributor to FastAPI documentation", "Maintainer of internal Python utility library"]
+  },
+
+  "content_chunks": [
+    {
+      "id": "personal-1",
+      "title": "Personal Summary",
+      "type": "personal",
+      "content": "Full Stack developer specializing in React.js, Material UI, and UX-driven design. Certified IBM Full Stack Development and Meta Front-End Specialization. Experienced in building responsive web applications, improving UI performance, and collaborating with cross-functional teams to deliver exceptional digital experiences.",
+      "metadata": {"category": "summary", "tags": ["React", "Material UI", "UX", "Full Stack"]}
+    },
+    {
+      "id": "exp-1",
+      "title": "Barnamala Tech Experience",
+      "type": "experience",
+      "content": "Full-Stack Developer at Barnamala Tech. Improved UI load speed and user satisfaction, automated deployment (reduced time by 40%). Skills: Next.js, React, Material UI, Python (Flask), MongoDB, AWS.",
+      "metadata": {"category": "work", "tags": ["Next.js", "React", "CI/CD", "AWS"]}
+    },
+    {
+      "id": "exp-2",
+      "title": "Hamro Chautari Experience",
+      "type": "experience",
+      "content": "Junior Web Developer at Hamro Chautari. Boosted engagement by 25% through improved UI consistency. Skills: React, Next.js, Tailwind CSS, Node.js, PostgreSQL, AWS.",
+      "metadata": {"category": "work", "tags": ["React", "Next.js", "Tailwind CSS"]}
+    },
+    {
+      "id": "exp-3",
+      "title": "Bihani Tech Experience",
+      "type": "experience",
+      "content": "Front-End Web Developer at Bihani Tech. Improved UI satisfaction by 35% with React.js and Bootstrap. Skills: JavaScript, React.js, Bootstrap, WordPress.",
+      "metadata": {"category": "work", "tags": ["React.js", "Bootstrap", "WordPress"]}
+    },
+    {
+      "id": "exp-4",
+      "title": "Adira Tech Internship",
+      "type": "experience",
+      "content": "Web Developer Intern at Adira Tech. Debugged UI issues and supported Agile development. Skills: JavaScript, React.js, Bootstrap, WordPress.",
+      "metadata": {"category": "internship", "tags": ["JavaScript", "Agile"]}
+    },
+    {
+      "id": "proj-1",
+      "title": "Job Tracker Project",
+      "type": "project",
+      "content": "Built a job tracking platform with analytics dashboard and secure document management. Impact: 10+ active users, streamlined resume management.",
+      "metadata": {"category": "project", "tags": ["Next.js", "PostgreSQL", "Vercel"]}
+    },
+    {
+      "id": "proj-2",
+      "title": "PDFly Project",
+      "type": "project",
+      "content": "Developed PDF APIs for secure processing and file encryption. Impact: 100+ documents processed daily, improved user satisfaction by 45%.",
+      "metadata": {"category": "project", "tags": ["Python", "React"]}
+    },
+    {
+      "id": "proj-3",
+      "title": "SangeetX Project",
+      "type": "project",
+      "content": "Built a music streaming platform with admin dashboard. Impact: 50+ users, reduced admin time by 60%, improved media loading speed by 50%.",
+      "metadata": {"category": "project", "tags": ["Next.js", "TypeScript", "Cloudinary"]}
+    },
+    {
+      "id": "proj-4",
+      "title": "BrainiX Project",
+      "type": "project",
+      "content": "Led development of AI-powered LMS with real-time chat and Stripe payments. Impact: 300% engagement increase, 94.7% course completion rate.",
+      "metadata": {"category": "project", "tags": ["Next.js", "OpenAI", "Stripe"]}
+    },
+    {
+      "id": "skills-1",
+      "title": "Technical Skills",
+      "type": "skills",
+      "content": "Frontend: React 19, Next.js 15, Tailwind CSS, Material UI, Typescript, Redux, JavaScript (ES6+). Backend: Node.js, Express, Python (Flask), REST APIs. Databases: MongoDB, PostgreSQL, MySQL. Cloud/DevOps: AWS (S3, EC2), Git/GitHub, CI/CD. UI/UX: Figma, Adobe XD, Responsive Design, Accessibility, Design Systems.",
+      "metadata": {"category": "skills", "tags": ["React", "Node.js", "AWS", "Figma"]}
+    },
+    {
+      "id": "skills-2",
+      "title": "Soft Skills",
+      "type": "skills",
+      "content": "Agile workflow, UX research, wireframing, prototyping, cross-functional collaboration.",
+      "metadata": {"category": "skills", "tags": ["Agile", "Collaboration", "UX"]}
+    },
+    {
+      "id": "edu-1",
+      "title": "Education",
+      "type": "education",
+      "content": "Bachelor of Information Technology, Victoria University Sydney, 2025, Sydney, Australia.",
+      "metadata": {"category": "education", "tags": ["Bachelor", "IT", "Victoria University"]}
+    },
+    {
+      "id": "career-1",
+      "title": "Career Goals",
+      "type": "career",
+      "content": "Short-term: Full-Stack Developer/Technical Lead role focusing on SaaS and AI-powered web applications. Long-term: Head of Engineering or Product Development in an AI/ML driven company.",
+      "metadata": {"category": "career", "tags": ["SaaS", "AI/ML", "Leadership"]}
+    }
+  ]
+}
