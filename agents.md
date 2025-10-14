@@ -6,8 +6,8 @@ Build an MCP server using the roll dice pattern to create a digital twin assista
 ## Reference Repositories
 - **Pattern Reference**: https://github.com/gocallum/rolldice-mcpserver.git
   - Roll dice MCP server - use same technology and pattern for our MCP server
-- **Logic Reference**: Local implementation in `digitaltwin_rag.py`
-  - My working Python RAG implementation using Upstash Vector and Groq
+- **Logic Reference**: https://github.com/DiwanMalla/digital-twin-workshop.git
+  - My working Python RAG implementation in `digitaltwin_rag.py` using Upstash Vector and Groq
   - Uses `digitaltwin.json` with `content_chunks` structure for profile data
   - Implements semantic search and AI response generation
 

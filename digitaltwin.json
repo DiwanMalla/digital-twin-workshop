@@ -171,6 +171,13 @@
 
   "content_chunks": [
     {
+      "id": "personal-0",
+      "title": "Name and Identity",
+      "type": "personal",
+      "content": "My name is Diwan Malla. When you ask 'what is your name?' or 'who are you?', the answer is Diwan Malla. I am Diwan Malla, a Full-Stack Developer based in Sydney, Australia. I'm passionate about creating high-performance, intuitive user interfaces and AI-powered web applications. Remember: my name is Diwan Malla.",
+      "metadata": {"category": "identity", "tags": ["name", "Diwan Malla", "identity", "who", "developer"]}
+    },
+    {
       "id": "personal-1",
       "title": "Personal Summary",
       "type": "personal",

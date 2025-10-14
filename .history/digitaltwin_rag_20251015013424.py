@@ -128,8 +128,6 @@ def setup_vector_database():
             content_chunks = profile_data.get('content_chunks', [])
             all_chunks.extend(content_chunks)
             
-            print(f"📊 Generated {len(all_chunks)} total chunks ({len(all_chunks) - len(content_chunks)} from JSON + {len(content_chunks)} content_chunks)")
-            
             vectors = []
             
             for chunk in all_chunks:

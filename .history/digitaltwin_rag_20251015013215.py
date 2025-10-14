@@ -106,9 +106,9 @@ def setup_vector_database():
         except:
             current_count = 0
         
-        # Load data (always load to ensure all data is uploaded)
-        if current_count == 0 or True:  # Force load for now
-            print("📝 Loading your complete professional profile...")
+        # Load data if database is empty
+        if current_count == 0:
+            print("📝 Loading your professional profile...")
             
             try:
                 with open(JSON_FILE, "r", encoding="utf-8") as f:
@@ -118,18 +118,10 @@ def setup_vector_database():
                 return None
             
             # Prepare vectors from all profile data
-            # Remove content_chunks to avoid duplication since they are pre-structured
-            profile_data_copy = profile_data.copy()
-            profile_data_copy.pop('content_chunks', None)
+            all_chunks = create_chunks_from_json(profile_data)
             
-            all_chunks = create_chunks_from_json(profile_data_copy)
-            
-            # Add back the pre-structured content_chunks
-            content_chunks = profile_data.get('content_chunks', [])
-            all_chunks.extend(content_chunks)
-            
-            print(f"📊 Generated {len(all_chunks)} total chunks ({len(all_chunks) - len(content_chunks)} from JSON + {len(content_chunks)} content_chunks)")
-            
+            # Filter out content_chunks if they exist to avoid duplication, or keep them
+            # For now, let's include everything
             vectors = []
             
             for chunk in all_chunks:
@@ -149,7 +141,7 @@ def setup_vector_database():
             
             # Upload vectors
             index.upsert(vectors=vectors)
-            print(f"✅ Successfully uploaded {len(vectors)} profile data chunks!")
+            print(f"✅ Successfully uploaded {len(vectors)} content chunks!")
         
         return index
         
