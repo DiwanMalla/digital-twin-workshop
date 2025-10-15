@@ -4,10 +4,12 @@
  * Server Actions for Digital Twin MCP Server
  * Implements RAG (Retrieval-Augmented Generation) functionality
  * Following the pattern from digitaltwin_rag.py
+ * Enhanced with LLM-powered query preprocessing and response formatting
  */
 
 import { vectorIndex, type QueryResult } from "./upstash";
 import { generateResponse } from "./groq";
+import { enhanceQuery, formatForInterview, type RAGMetrics } from "./llm-enhanced-rag";
 import fs from "fs/promises";
 import path from "path";
 
@@ -24,6 +26,7 @@ interface RAGResponse {
   success: boolean;
   error?: string;
   processingTime?: number;
+  metrics?: RAGMetrics;
 }
 
 /**
@@ -303,4 +306,149 @@ Provide a helpful, professional response:`;
       processingTime,
     };
   }
+}
+
+/**
+ * Enhanced RAG query with LLM-powered preprocessing and postprocessing
+ * Provides interview-focused, context-aware responses
+ * @param question - User's question about the digital twin
+ * @returns Enhanced RAG response optimized for interview preparation
+ */
+export async function performEnhancedRAGQuery(question: string): Promise<RAGResponse> {
+  const startTime = Date.now();
+  const metrics: Partial<RAGMetrics> = {};
+  
+  console.log(`[Enhanced RAG] Starting query: "${question.substring(0, 100)}..."`)
+  
+  try {
+    // Validate input
+    if (!question || question.trim().length === 0) {
+      return {
+        answer: "Please provide a question.",
+        sources: [],
+        success: false,
+        error: "Empty question",
+        processingTime: Date.now() - startTime,
+      };
+    }
+
+    // Step 1: Enhance query with LLM
+    console.log("[Enhanced RAG] Step 1: Enhancing query with LLM...");
+    const enhanceStart = Date.now();
+    const enhancedQuery = await enhanceQuery(question);
+    metrics.queryEnhancementTime = Date.now() - enhanceStart;
+    metrics.enhancedQuery = enhancedQuery;
+
+    // Step 2: Query vector database with enhanced query
+    console.log("[Enhanced RAG] Step 2: Querying vector database with enhanced query...");
+    const searchStart = Date.now();
+    const results = await queryVectors(enhancedQuery, 5); // Get more results for better context
+    metrics.vectorSearchTime = Date.now() - searchStart;
+    metrics.resultsFound = results.length;
+
+    if (!results || results.length === 0) {
+      console.log("[Enhanced RAG] No results found in vector database");
+      return {
+        answer: "I don't have specific information about that topic. Could you try rephrasing your question or asking about my experience, skills, or projects?",
+        sources: [],
+        success: true,
+        processingTime: Date.now() - startTime,
+        metrics: metrics as RAGMetrics,
+      };
+    }
+
+    // Step 3: Extract relevant content
+    console.log(`[Enhanced RAG] Step 3: Extracting content from ${results.length} results...`);
+    const sources = results
+      .filter((result) => result.metadata?.content)
+      .map((result) => {
+        const title = (result.metadata?.title as string) || "Information";
+        const content = (result.metadata?.content as string) || "";
+
+        return {
+          title,
+          content,
+          score: result.score,
+        };
+      });
+
+    if (sources.length === 0) {
+      console.warn("[Enhanced RAG] Results found but no content could be extracted");
+      return {
+        answer: "I found some information but couldn't extract the details. Please try a different question.",
+        sources: [],
+        success: true,
+        processingTime: Date.now() - startTime,
+        metrics: metrics as RAGMetrics,
+      };
+    }
+
+    console.log(`[Enhanced RAG] Extracted ${sources.length} sources with content`);
+
+    // Step 4: Format response for interview context with LLM
+    console.log("[Enhanced RAG] Step 4: Formatting response for interview context...");
+    const formatStart = Date.now();
+    const answer = await formatForInterview(results, question);
+    metrics.responseFormattingTime = Date.now() - formatStart;
+    
+    metrics.totalTime = Date.now() - startTime;
+    console.log(`[Enhanced RAG] Query completed successfully in ${metrics.totalTime}ms`);
+    console.log(`[Enhanced RAG] Performance breakdown:`, metrics);
+
+    return {
+      answer,
+      sources,
+      success: true,
+      processingTime: metrics.totalTime,
+      metrics: metrics as RAGMetrics,
+    };
+  } catch (error) {
+    const processingTime = Date.now() - startTime;
+    console.error(`[Enhanced RAG] Error after ${processingTime}ms:`, error);
+    
+    const errorMessage = error instanceof Error ? error.message : "Unknown error";
+    
+    // Fallback to basic RAG on error
+    console.log("[Enhanced RAG] Falling back to basic RAG...");
+    return await performRAGQuery(question);
+  }
+}
+
+/**
+ * Compare basic RAG vs enhanced RAG side-by-side
+ * Useful for evaluating improvements and A/B testing
+ * @param question - User's question about the digital twin
+ * @returns Comparison of both approaches with metrics
+ */
+export async function compareRAGApproaches(question: string): Promise<{
+  question: string;
+  results: {
+    basic: RAGResponse;
+    enhanced: RAGResponse;
+  };
+  totalComparisonTime: number;
+}> {
+  const startTime = Date.now();
+  
+  console.log(`[Comparison] Testing both RAG approaches for: "${question}"`);
+  
+  // Run both approaches in parallel
+  const [basicResult, enhancedResult] = await Promise.all([
+    performRAGQuery(question),
+    performEnhancedRAGQuery(question),
+  ]);
+  
+  const totalTime = Date.now() - startTime;
+  
+  console.log(`[Comparison] Both approaches completed in ${totalTime}ms`);
+  console.log(`[Comparison] Basic: ${basicResult.processingTime}ms, Enhanced: ${enhancedResult.processingTime}ms`);
+  
+  return {
+    question,
+    results: {
+      basic: basicResult,
+      enhanced: enhancedResult,
+    },
+    totalComparisonTime: totalTime,
+  };
 }
