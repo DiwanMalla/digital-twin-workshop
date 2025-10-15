@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { performRAGQuery, loadProfileData } from "@/lib/actions";
+import { performRAGQuery, performEnhancedRAGQuery, loadProfileData } from "@/lib/actions";
 
 /**
  * MCP Server API endpoint for RAG queries
  * Follows the roll dice pattern for MCP server implementation
+ * Now supports both basic and enhanced RAG (enhanced by default)
  * 
  * POST /api/mcp/query - Query the digital twin with a question
  * GET /api/mcp/query - Load/verify profile data in vector database
@@ -17,7 +18,7 @@ export async function POST(request: NextRequest) {
     console.log("[API] Received RAG query request");
     
     const body = await request.json();
-    const { question } = body;
+    const { question, enhanced = true } = body; // Default to enhanced RAG
 
     // Validate input
     if (!question || typeof question !== "string") {
@@ -51,8 +52,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Perform RAG query
-    const result = await performRAGQuery(question);
+    // Perform RAG query (enhanced by default for better interview responses)
+    console.log(`[API] Using ${enhanced ? 'enhanced' : 'basic'} RAG`);
+    const result = enhanced 
+      ? await performEnhancedRAGQuery(question)
+      : await performRAGQuery(question);
     
     const duration = Date.now() - startTime;
     console.log(`[API] Request completed in ${duration}ms`);
@@ -60,6 +64,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       ...result,
       requestTime: duration,
+      ragType: enhanced ? 'enhanced' : 'basic',
     });
   } catch (error) {
     const duration = Date.now() - startTime;
