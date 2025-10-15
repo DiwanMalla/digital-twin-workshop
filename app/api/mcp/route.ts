@@ -16,19 +16,26 @@ import { performRAGQuery, loadProfileData } from "@/lib/actions";
 interface JSONRPCRequest {
   jsonrpc: "2.0";
   method: string;
-  params?: Record<string, any>;
+  params?: Record<string, unknown>;
   id: string | number;
 }
 
-interface JSONRPCResponse {
+interface JSONRPCError {
+  code: number;
+  message: string;
+  data?: unknown;
+}
+
+interface JSONRPCSuccessResponse {
   jsonrpc: "2.0";
-  result?: any;
-  error?: {
-    code: number;
-    message: string;
-    data?: any;
-  };
+  result: unknown;
   id: string | number;
+}
+
+interface JSONRPCErrorResponse {
+  jsonrpc: "2.0";
+  error: JSONRPCError;
+  id: string | number | null;
 }
 
 export async function POST(request: NextRequest) {
@@ -154,7 +161,7 @@ export async function POST(request: NextRequest) {
 
       case "tools/call":
         const toolName = body.params?.name;
-        const toolArgs = body.params?.arguments;
+        const toolArgs = body.params?.arguments as { question?: string } | undefined;
         
         if (toolName === "query_digital_twin" && toolArgs?.question) {
           const result = await performRAGQuery(toolArgs.question);
