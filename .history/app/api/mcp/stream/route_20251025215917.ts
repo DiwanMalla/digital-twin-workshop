@@ -17,41 +17,6 @@ export async function POST(request: Request) {
   const stream = new ReadableStream({
     async start(controller) {
       try {
-        // Handle greetings - provide a friendly welcome without vector search
-        const greetings = /^(hi|hello|hey|howdy|greetings|good morning|good afternoon|good evening)[\s!?.]*$/i;
-        if (greetings.test(question.trim())) {
-          const welcomeMessage = `Hello! 👋 I'm Diwan Malla's Digital Twin - an AI assistant trained on his professional profile.
-
-I can help you learn about:
-• Technical skills and expertise (React, Next.js, Node.js, Python, etc.)
-• Work experience and achievements
-• Portfolio projects (Job Tracker, PDFly, SangeetX, BrainiX)
-• Career goals and aspirations
-• Education and certifications
-
-Feel free to ask me anything! For example:
-- "What are your technical skills?"
-- "Tell me about your projects"
-- "What's your work experience?"
-- "What are you looking for in your next role?"
-
-What would you like to know? 😊`;
-
-          // Stream the welcome message
-          for (const char of welcomeMessage) {
-            controller.enqueue(
-              encoder.encode(`data: ${JSON.stringify({ type: "token", content: char })}\n\n`)
-            );
-            await new Promise((resolve) => setTimeout(resolve, 10));
-          }
-          
-          controller.enqueue(
-            encoder.encode(`data: ${JSON.stringify({ type: "done" })}\n\n`)
-          );
-          controller.close();
-          return;
-        }
-
         // Send status update
         controller.enqueue(
           encoder.encode(

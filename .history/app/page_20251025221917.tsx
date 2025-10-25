@@ -349,7 +349,7 @@ export default function Home() {
               <div className="flex items-center justify-between">
                 <div>
                   <h1 className="text-2xl font-bold text-white mb-1">
-                    Chat with <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Diwan&apos;s Digital Twin</span>
+                    Chat with <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Diwan's Digital Twin</span>
                   </h1>
                   <p className="text-sm text-slate-400">Ask me anything about my professional background, skills, and experience</p>
                 </div>
@@ -379,7 +379,7 @@ export default function Home() {
                     Welcome to My Digital Twin
                   </h2>
                   <p className="text-slate-400 text-lg mb-8 max-w-2xl">
-                    I&apos;m an AI assistant trained on Diwan Malla&apos;s professional profile. Ask me anything about skills, experience, projects, or career goals!
+                    I'm an AI assistant trained on Diwan Malla's professional profile. Ask me anything about skills, experience, projects, or career goals!
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full max-w-2xl">
                     {sampleQuestions.slice(0, 4).map((q) => (

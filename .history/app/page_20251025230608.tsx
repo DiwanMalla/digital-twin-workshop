@@ -379,7 +379,7 @@ export default function Home() {
                     Welcome to My Digital Twin
                   </h2>
                   <p className="text-slate-400 text-lg mb-8 max-w-2xl">
-                    I&apos;m an AI assistant trained on Diwan Malla&apos;s professional profile. Ask me anything about skills, experience, projects, or career goals!
+                    I'm an AI assistant trained on Diwan Malla's professional profile. Ask me anything about skills, experience, projects, or career goals!
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full max-w-2xl">
                     {sampleQuestions.slice(0, 4).map((q) => (
