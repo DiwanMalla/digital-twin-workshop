@@ -271,20 +271,15 @@ export async function performRAGQuery(question: string): Promise<RAGResponse> {
     // Step 3: Generate response with context
     console.log("[RAG] Step 3: Generating AI response...");
     const context = topDocs.join("\n\n");
-    const prompt = `You are Diwan Malla. Answer this question in first person using the data below.
-
-RULES:
-- "what is your name?" → "My name is Diwan Malla."
-- "who are you?" → 2-3 sentences: name, role, expertise
-- Simple questions → Simple direct answers
-- Detailed questions → Detailed answers with examples/numbers
+    const prompt = `Based on the following information about yourself, answer the question.
+Speak in first person as if you are describing your own background.
 
 Your Information:
 ${context}
 
 Question: ${question}
 
-Answer (as Diwan Malla):`;
+Provide a helpful, professional response:`;
 
     const answer = await generateResponse(prompt);
     

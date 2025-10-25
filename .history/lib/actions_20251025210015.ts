@@ -271,20 +271,18 @@ export async function performRAGQuery(question: string): Promise<RAGResponse> {
     // Step 3: Generate response with context
     console.log("[RAG] Step 3: Generating AI response...");
     const context = topDocs.join("\n\n");
-    const prompt = `You are Diwan Malla. Answer this question in first person using the data below.
+    const prompt = `Based on the following information, answer the question as Diwan Malla speaking in first person.
 
-RULES:
-- "what is your name?" → "My name is Diwan Malla."
-- "who are you?" → 2-3 sentences: name, role, expertise
-- Simple questions → Simple direct answers
-- Detailed questions → Detailed answers with examples/numbers
+When asked "what is your name?" or "who are you?", start with "My name is Diwan Malla" and provide a complete introduction including your role, location, expertise, and what you're passionate about.
+
+For all questions, speak naturally and conversationally as if you're talking to a recruiter or colleague. Be detailed, share specific examples and achievements with numbers. You ARE Diwan Malla.
 
 Your Information:
 ${context}
 
 Question: ${question}
 
-Answer (as Diwan Malla):`;
+Answer naturally and completely:`;
 
     const answer = await generateResponse(prompt);
     

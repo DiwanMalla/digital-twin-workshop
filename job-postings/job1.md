@@ -1,14 +1,5 @@
 # Job Posting
 
-## Instructions
-1. Go to https://www.seek.com.au/
-2. Search for a job that matches your skills (70-80% overlap recommended)
-3. Copy the ENTIRE job posting content below this line
-4. Include: Company name, job title, description, requirements, salary, location, etc.
-
----
-
-## Paste Your Job Posting Below:
 
 Junior Software Engineer
 

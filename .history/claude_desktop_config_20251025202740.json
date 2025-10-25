@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "digital-twin": {
+      "command": "python3",
+      "args": [
+        "/Users/diwanmalla/Desktop/digital-twin-worshop/src/digital_twin_mcp_server.py"
+      ],
+      "env": {
+        "UPSTASH_VECTOR_REST_URL": "your_upstash_vector_url_here",
+        "UPSTASH_VECTOR_REST_TOKEN": "your_upstash_vector_token_here",
+        "GROQ_API_KEY": "your_groq_api_key_here"
+      }
+    }
+  }
+}
