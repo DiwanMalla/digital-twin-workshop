@@ -280,9 +280,9 @@ ANSWER AS DIWAN MALLA:`;
           }
         }
 
-        // Store conversation for learning and get the ID
+        // Store conversation for learning (async, don't wait)
         const topics = extractTopics(question);
-        const storedConversation = await storeConversation({
+        storeConversation({
           question,
           answer: fullAnswer,
           timestamp: new Date(),
@@ -291,19 +291,11 @@ ANSWER AS DIWAN MALLA:`;
             confidence: results.length > 0 ? results[0].score : 0,
             category: topics[0] || "general",
           },
-        }).catch((err) => {
-          console.error("[Learning] Failed to store conversation:", err);
-          return null;
-        });
+        }).catch((err) => console.error("[Learning] Failed to store conversation:", err));
 
-        // Send done signal with conversationId
+        // Send done signal
         controller.enqueue(
-          encoder.encode(
-            `data: ${JSON.stringify({ 
-              type: "done", 
-              conversationId: storedConversation?.id 
-            })}\n\n`
-          )
+          encoder.encode(`data: ${JSON.stringify({ type: "done" })}\n\n`)
         );
         controller.close();
       } catch (error) {

@@ -15,14 +15,8 @@ export async function POST(request: Request) {
   const encoder = new TextEncoder();
   const { question } = await request.json();
 
-  // Check for similar past conversations to learn from
-  const similarConversations = await findSimilarConversations(question, 2);
-  console.log(`[Learning] Found ${similarConversations.length} similar conversations`);
-
   const stream = new ReadableStream({
     async start(controller) {
-      let fullAnswer = ""; // Store complete answer for learning
-      
       try {
         // Handle casual conversations and greetings
         const casualGreetings =
@@ -271,7 +265,6 @@ ANSWER AS DIWAN MALLA:`;
         for await (const chunk of completion) {
           const content = chunk.choices[0]?.delta?.content || "";
           if (content) {
-            fullAnswer += content; // Accumulate full answer
             controller.enqueue(
               encoder.encode(
                 `data: ${JSON.stringify({ type: "token", content })}\n\n`
@@ -280,30 +273,9 @@ ANSWER AS DIWAN MALLA:`;
           }
         }
 
-        // Store conversation for learning and get the ID
-        const topics = extractTopics(question);
-        const storedConversation = await storeConversation({
-          question,
-          answer: fullAnswer,
-          timestamp: new Date(),
-          metadata: {
-            sources: results.map((r) => r.metadata?.title as string).filter(Boolean),
-            confidence: results.length > 0 ? results[0].score : 0,
-            category: topics[0] || "general",
-          },
-        }).catch((err) => {
-          console.error("[Learning] Failed to store conversation:", err);
-          return null;
-        });
-
-        // Send done signal with conversationId
+        // Send done signal
         controller.enqueue(
-          encoder.encode(
-            `data: ${JSON.stringify({ 
-              type: "done", 
-              conversationId: storedConversation?.id 
-            })}\n\n`
-          )
+          encoder.encode(`data: ${JSON.stringify({ type: "done" })}\n\n`)
         );
         controller.close();
       } catch (error) {

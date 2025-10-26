@@ -197,19 +197,12 @@ export default function Home() {
               } else if (data.type === "done") {
                 setIsStreaming(false);
                 setStatusMessage("");
-                
-                console.log("[Frontend] Received conversationId:", data.conversationId);
-                
-                // Add complete AI message with conversationId from backend
+                // Add complete AI message
                 const aiMessage: Message = {
                   type: "ai",
                   content: fullResponse,
                   timestamp: new Date(),
-                  conversationId: data.conversationId, // Use ID from backend
                 };
-                
-                console.log("[Frontend] Created message:", aiMessage);
-                
                 setMessages((prev) => [...prev, aiMessage]);
                 setStreamingMessage("");
               } else if (data.type === "error") {
@@ -243,37 +236,6 @@ export default function Home() {
       setTimeout(() => setCopiedIndex(null), 2000);
     } catch (err) {
       console.error("Failed to copy:", err);
-    }
-  };
-
-  const handleFeedback = async (
-    index: number,
-    feedback: "positive" | "negative"
-  ) => {
-    const message = messages[index];
-    if (!message || message.type !== "ai" || !message.conversationId) return;
-
-    try {
-      const res = await fetch("/api/learning/feedback", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          conversationId: message.conversationId,
-          feedback,
-        }),
-      });
-
-      if (res.ok) {
-        // Update message with feedback
-        setMessages((prev) => {
-          const updated = [...prev];
-          updated[index] = { ...updated[index], feedback };
-          return updated;
-        });
-        console.log(`[Feedback] Submitted ${feedback} for conversation`);
-      }
-    } catch (err) {
-      console.error("Failed to submit feedback:", err);
     }
   };
 
@@ -660,57 +622,25 @@ export default function Home() {
                         })}
                       </p>
                       {msg.type === "ai" && (
-                        <div className="flex items-center gap-2">
-                          {/* Feedback buttons */}
-                          {msg.conversationId && (
+                        <button
+                          onClick={() => copyToClipboard(msg.content, idx)}
+                          className="text-xs opacity-60 hover:opacity-100 transition-opacity flex items-center gap-1 px-2 py-1 rounded-lg hover:bg-white/5"
+                          title="Copy response"
+                        >
+                          {copiedIndex === idx ? (
                             <>
-                              <button
-                                onClick={() => handleFeedback(idx, "positive")}
-                                disabled={!!msg.feedback}
-                                className={`text-xs opacity-60 hover:opacity-100 transition-opacity flex items-center gap-1 px-2 py-1 rounded-lg hover:bg-white/5 disabled:opacity-40 ${
-                                  msg.feedback === "positive"
-                                    ? "text-emerald-400 opacity-100"
-                                    : ""
-                                }`}
-                                title="Helpful"
-                              >
-                                <ThumbsUp className="w-3 h-3" />
-                              </button>
-                              <button
-                                onClick={() => handleFeedback(idx, "negative")}
-                                disabled={!!msg.feedback}
-                                className={`text-xs opacity-60 hover:opacity-100 transition-opacity flex items-center gap-1 px-2 py-1 rounded-lg hover:bg-white/5 disabled:opacity-40 ${
-                                  msg.feedback === "negative"
-                                    ? "text-rose-400 opacity-100"
-                                    : ""
-                                }`}
-                                title="Not helpful"
-                              >
-                                <ThumbsDown className="w-3 h-3" />
-                              </button>
+                              <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-400" />
+                              <span className="hidden sm:inline text-emerald-400">
+                                Copied
+                              </span>
+                            </>
+                          ) : (
+                            <>
+                              <Copy className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                              <span className="hidden sm:inline">Copy</span>
                             </>
                           )}
-                          {/* Copy button */}
-                          <button
-                            onClick={() => copyToClipboard(msg.content, idx)}
-                            className="text-xs opacity-60 hover:opacity-100 transition-opacity flex items-center gap-1 px-2 py-1 rounded-lg hover:bg-white/5"
-                            title="Copy response"
-                          >
-                            {copiedIndex === idx ? (
-                              <>
-                                <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-400" />
-                                <span className="hidden sm:inline text-emerald-400">
-                                  Copied
-                                </span>
-                              </>
-                            ) : (
-                              <>
-                                <Copy className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-                                <span className="hidden sm:inline">Copy</span>
-                              </>
-                            )}
-                          </button>
-                        </div>
+                        </button>
                       )}
                     </div>
                   </div>

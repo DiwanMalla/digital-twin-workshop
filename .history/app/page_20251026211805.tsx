@@ -197,9 +197,6 @@ export default function Home() {
               } else if (data.type === "done") {
                 setIsStreaming(false);
                 setStatusMessage("");
-                
-                console.log("[Frontend] Received conversationId:", data.conversationId);
-                
                 // Add complete AI message with conversationId from backend
                 const aiMessage: Message = {
                   type: "ai",
@@ -207,9 +204,6 @@ export default function Home() {
                   timestamp: new Date(),
                   conversationId: data.conversationId, // Use ID from backend
                 };
-                
-                console.log("[Frontend] Created message:", aiMessage);
-                
                 setMessages((prev) => [...prev, aiMessage]);
                 setStreamingMessage("");
               } else if (data.type === "error") {

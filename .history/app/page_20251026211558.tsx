@@ -197,19 +197,14 @@ export default function Home() {
               } else if (data.type === "done") {
                 setIsStreaming(false);
                 setStatusMessage("");
-                
-                console.log("[Frontend] Received conversationId:", data.conversationId);
-                
-                // Add complete AI message with conversationId from backend
+                // Add complete AI message with conversationId
+                const conversationId = `conv_${Date.now()}_${Math.random().toString(36).substring(7)}`;
                 const aiMessage: Message = {
                   type: "ai",
                   content: fullResponse,
                   timestamp: new Date(),
-                  conversationId: data.conversationId, // Use ID from backend
+                  conversationId,
                 };
-                
-                console.log("[Frontend] Created message:", aiMessage);
-                
                 setMessages((prev) => [...prev, aiMessage]);
                 setStreamingMessage("");
               } else if (data.type === "error") {
