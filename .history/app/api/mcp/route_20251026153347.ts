@@ -20,6 +20,12 @@ interface JSONRPCRequest {
   id: string | number;
 }
 
+interface JSONRPCError {
+  code: number;
+  message: string;
+  data?: unknown;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body: JSONRPCRequest = await request.json();

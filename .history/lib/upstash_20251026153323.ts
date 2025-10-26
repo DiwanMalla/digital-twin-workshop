@@ -28,8 +28,7 @@ export const vectorIndex = new Proxy({} as Index, {
       token: token!,
     });
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const value = (index as any)[prop];
+    const value = (index as Record<string, unknown>)[prop];
 
     // If it's a function, bind it to the index
     if (typeof value === "function") {
