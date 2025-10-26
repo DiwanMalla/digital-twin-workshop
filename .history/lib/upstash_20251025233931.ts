@@ -11,43 +11,43 @@ export const vectorIndex = new Proxy({} as Index, {
     // Get fresh env vars each time
     const url = process.env.UPSTASH_VECTOR_REST_URL;
     const token = process.env.UPSTASH_VECTOR_REST_TOKEN;
-
+    
     // Debug logging (remove in production)
     if (!url || !token) {
-      console.error("[Upstash] Missing credentials!", {
+      console.error('[Upstash] Missing credentials!', {
         hasUrl: !!url,
         hasToken: !!token,
         urlPreview: url?.substring(0, 30),
         tokenPreview: token?.substring(0, 20),
       });
     }
-
+    
     // Create fresh index instance for each property access
     const index = new Index({
       url: url!,
       token: token!,
     });
-
+    
     const value = (index as any)[prop];
-
+    
     // If it's a function, bind it to the index
-    if (typeof value === "function") {
+    if (typeof value === 'function') {
       return value.bind(index);
     }
-
+    
     return value;
-  },
+  }
 });
 
 // Also export a function that creates a fresh instance
 export function getVectorIndex() {
   const url = process.env.UPSTASH_VECTOR_REST_URL;
   const token = process.env.UPSTASH_VECTOR_REST_TOKEN;
-
+  
   if (!url || !token) {
-    throw new Error("Upstash credentials not found in environment variables");
+    throw new Error('Upstash credentials not found in environment variables');
   }
-
+  
   return new Index({
     url,
     token,

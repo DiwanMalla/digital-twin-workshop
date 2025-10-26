@@ -18,12 +18,15 @@ export async function POST(request: Request) {
     async start(controller) {
       try {
         // Handle casual conversations and greetings
-        const casualGreetings = /^(hi|hello|hey|howdy|greetings|good morning|good afternoon|good evening|sup|wassup|yo)[\s!?.]*$/i;
-        const howAreYou = /^(how are you|how r u|how're you|how are ya|hows it going|how's it going|what's up|whats up|whatcha doing|what are you doing)[\s!?.]*$/i;
-        const niceToMeet = /^(nice to meet you|pleasure to meet you|good to meet you)[\s!?.]*$/i;
-        
+        const casualGreetings =
+          /^(hi|hello|hey|howdy|greetings|good morning|good afternoon|good evening|sup|wassup|yo)[\s!?.]*$/i;
+        const howAreYou =
+          /^(how are you|how r u|how're you|how are ya|hows it going|how's it going|what's up|whats up|whatcha doing|what are you doing)[\s!?.]*$/i;
+        const niceToMeet =
+          /^(nice to meet you|pleasure to meet you|good to meet you)[\s!?.]*$/i;
+
         let conversationalResponse = "";
-        
+
         // Check for "how are you" type questions
         if (howAreYou.test(question.trim())) {
           conversationalResponse = `Hey! 😊 I'm doing great, thanks for asking! I'm Diwan Malla's Digital Twin, and I'm here and ready to chat about his professional journey.
@@ -67,16 +70,18 @@ Feel free to ask me anything! For example:
 
 What would you like to know? 😊`;
         }
-        
+
         // If we matched a conversational pattern, stream the response
         if (conversationalResponse) {
           for (const char of conversationalResponse) {
             controller.enqueue(
-              encoder.encode(`data: ${JSON.stringify({ type: "token", content: char })}\n\n`)
+              encoder.encode(
+                `data: ${JSON.stringify({ type: "token", content: char })}\n\n`
+              )
             );
             await new Promise((resolve) => setTimeout(resolve, 10));
           }
-          
+
           controller.enqueue(
             encoder.encode(`data: ${JSON.stringify({ type: "done" })}\n\n`)
           );

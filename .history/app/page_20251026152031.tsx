@@ -65,18 +65,6 @@ export default function Home() {
     inputRef.current?.focus();
   }, []);
 
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isMobileMenuOpen]);
-
   const loadDatabase = async () => {
     try {
       const res = await fetch("/api/mcp/query");

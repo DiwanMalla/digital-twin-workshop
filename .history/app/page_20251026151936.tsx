@@ -65,18 +65,6 @@ export default function Home() {
     inputRef.current?.focus();
   }, []);
 
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isMobileMenuOpen]);
-
   const loadDatabase = async () => {
     try {
       const res = await fetch("/api/mcp/query");
@@ -339,35 +327,33 @@ export default function Home() {
         <div
           className={`${
             isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-          } lg:translate-x-0 fixed lg:static inset-y-0 left-0 z-50 w-72 sm:w-80 flex-col border-r border-white/10 backdrop-blur-xl bg-gray-900/98 lg:bg-gray-900/50 p-4 sm:p-6 h-screen overflow-y-auto transition-transform duration-300 ease-in-out flex`}
+          } lg:translate-x-0 fixed lg:static inset-y-0 left-0 z-50 w-80 flex-col border-r border-white/10 backdrop-blur-xl bg-gray-900/95 lg:bg-gray-900/50 p-6 h-screen overflow-y-auto transition-transform duration-300 ease-in-out flex`}
         >
           {/* Close button for mobile */}
           <button
             onClick={() => setIsMobileMenuOpen(false)}
-            className="lg:hidden absolute top-3 right-3 p-2 rounded-lg hover:bg-white/10 transition-colors z-10"
-            aria-label="Close menu"
+            className="lg:hidden absolute top-4 right-4 p-2 rounded-lg hover:bg-white/10 transition-colors"
           >
             <X className="w-5 h-5 text-white" />
           </button>
-
           {/* Logo/Brand */}
-          <div className="mb-6">
-            <div className="flex items-center gap-2.5 mb-2">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+          <div className="mb-8">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                <Brain className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h2 className="text-lg sm:text-xl font-bold text-white">Digital Twin</h2>
-                <p className="text-xs text-slate-400">AI Assistant</p>
+                <h2 className="text-xl font-bold text-white">Digital Twin</h2>
+                <p className="text-xs text-slate-400">AI Profile Assistant</p>
               </div>
             </div>
           </div>
 
           {/* Database Status */}
           {dbStatus && (
-            <div className="mb-4">
+            <div className="mb-6">
               <div
-                className={`p-3 sm:p-4 rounded-xl border backdrop-blur-sm ${
+                className={`p-4 rounded-xl border backdrop-blur-sm ${
                   dbStatus.success
                     ? "bg-emerald-500/10 border-emerald-500/30"
                     : "bg-rose-500/10 border-rose-500/30"
@@ -388,14 +374,14 @@ export default function Home() {
                   </span>
                 </div>
                 {dbStatus.vectorCount && (
-                  <p className="text-xs text-slate-400 mb-2">
+                  <p className="text-xs text-slate-400">
                     {dbStatus.vectorCount} vectors indexed
                   </p>
                 )}
                 <button
                   onClick={reloadDatabase}
                   disabled={isReloading}
-                  className="mt-2 w-full flex items-center justify-center gap-2 px-3 py-2 bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700/50 rounded-lg text-xs text-slate-300 transition-all disabled:opacity-50"
+                  className="mt-3 w-full flex items-center justify-center gap-2 px-3 py-2 bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700/50 rounded-lg text-xs text-slate-300 transition-all disabled:opacity-50"
                 >
                   <RotateCw
                     className={`w-3 h-3 ${isReloading ? "animate-spin" : ""}`}
@@ -407,29 +393,29 @@ export default function Home() {
           )}
 
           {/* GitHub Sync */}
-          <div className="mb-4">
-            <div className="p-3 sm:p-4 rounded-xl border border-white/10 backdrop-blur-sm bg-white/5">
+          <div className="mb-6">
+            <div className="p-4 rounded-xl border border-white/10 backdrop-blur-sm bg-white/5">
               <div className="flex items-center gap-2 mb-2">
                 <Github className="w-4 h-4 text-blue-400" />
                 <span className="text-sm font-medium text-white">
-                  GitHub Sync
+                  GitHub Auto-Sync
                 </span>
               </div>
               {lastSync && (
-                <p className="text-xs text-slate-400 mb-2">
-                  Last: {new Date(lastSync).toLocaleDateString()}
+                <p className="text-xs text-slate-400 mb-3">
+                  Last synced: {new Date(lastSync).toLocaleString()}
                 </p>
               )}
               {syncStatus && (
                 <div
-                  className={`mb-2 p-2 rounded-lg text-xs ${
+                  className={`mb-3 p-2 rounded-lg text-xs ${
                     syncStatus.success
                       ? "bg-emerald-500/10 text-emerald-400"
                       : "bg-rose-500/10 text-rose-400"
                   }`}
                 >
                   {syncStatus.success
-                    ? `✓ ${syncStatus.repos_synced} repos synced`
+                    ? `✓ Synced ${syncStatus.repos_synced} repositories`
                     : syncStatus.message || "Sync failed"}
                 </div>
               )}
@@ -451,14 +437,14 @@ export default function Home() {
           </div>
 
           {/* Stats */}
-          <div className="mb-4 space-y-2">
-            <div className="flex items-center justify-between p-2.5 rounded-lg bg-white/5 border border-white/10">
+          <div className="mb-6 space-y-3">
+            <div className="flex items-center justify-between p-3 rounded-lg bg-white/5 border border-white/10">
               <span className="text-xs text-slate-400">Messages</span>
               <span className="text-sm font-semibold text-white">
                 {messages.length}
               </span>
             </div>
-            <div className="flex items-center justify-between p-2.5 rounded-lg bg-white/5 border border-white/10">
+            <div className="flex items-center justify-between p-3 rounded-lg bg-white/5 border border-white/10">
               <span className="text-xs text-slate-400">Status</span>
               <span className="flex items-center gap-1.5 text-xs">
                 <span
@@ -474,22 +460,22 @@ export default function Home() {
           </div>
 
           {/* Tech Stack */}
-          <div className="mb-4">
-            <h3 className="text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">
+          <div className="mb-6">
+            <h3 className="text-xs font-semibold text-slate-400 mb-3 uppercase tracking-wider">
               Powered By
             </h3>
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-xs text-slate-300">
                 <Zap className="w-3 h-3 text-blue-400" />
-                <span>Next.js 15</span>
+                <span>Next.js 15 + Streaming</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-slate-300">
                 <Database className="w-3 h-3 text-purple-400" />
-                <span>Upstash Vector</span>
+                <span>Upstash Vector DB</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-slate-300">
                 <Brain className="w-3 h-3 text-pink-400" />
-                <span>Groq AI</span>
+                <span>Groq AI (Llama 3.3)</span>
               </div>
             </div>
           </div>

@@ -65,18 +65,6 @@ export default function Home() {
     inputRef.current?.focus();
   }, []);
 
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isMobileMenuOpen]);
-
   const loadDatabase = async () => {
     try {
       const res = await fetch("/api/mcp/query");
@@ -339,35 +327,33 @@ export default function Home() {
         <div
           className={`${
             isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
-          } lg:translate-x-0 fixed lg:static inset-y-0 left-0 z-50 w-72 sm:w-80 flex-col border-r border-white/10 backdrop-blur-xl bg-gray-900/98 lg:bg-gray-900/50 p-4 sm:p-6 h-screen overflow-y-auto transition-transform duration-300 ease-in-out flex`}
+          } lg:translate-x-0 fixed lg:static inset-y-0 left-0 z-50 w-80 flex-col border-r border-white/10 backdrop-blur-xl bg-gray-900/95 lg:bg-gray-900/50 p-6 h-screen overflow-y-auto transition-transform duration-300 ease-in-out flex`}
         >
           {/* Close button for mobile */}
           <button
             onClick={() => setIsMobileMenuOpen(false)}
-            className="lg:hidden absolute top-3 right-3 p-2 rounded-lg hover:bg-white/10 transition-colors z-10"
-            aria-label="Close menu"
+            className="lg:hidden absolute top-4 right-4 p-2 rounded-lg hover:bg-white/10 transition-colors"
           >
             <X className="w-5 h-5 text-white" />
           </button>
-
           {/* Logo/Brand */}
-          <div className="mb-6">
-            <div className="flex items-center gap-2.5 mb-2">
-              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+          <div className="mb-8">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                <Brain className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h2 className="text-lg sm:text-xl font-bold text-white">Digital Twin</h2>
-                <p className="text-xs text-slate-400">AI Assistant</p>
+                <h2 className="text-xl font-bold text-white">Digital Twin</h2>
+                <p className="text-xs text-slate-400">AI Profile Assistant</p>
               </div>
             </div>
           </div>
 
           {/* Database Status */}
           {dbStatus && (
-            <div className="mb-4">
+            <div className="mb-6">
               <div
-                className={`p-3 sm:p-4 rounded-xl border backdrop-blur-sm ${
+                className={`p-4 rounded-xl border backdrop-blur-sm ${
                   dbStatus.success
                     ? "bg-emerald-500/10 border-emerald-500/30"
                     : "bg-rose-500/10 border-rose-500/30"
@@ -388,14 +374,14 @@ export default function Home() {
                   </span>
                 </div>
                 {dbStatus.vectorCount && (
-                  <p className="text-xs text-slate-400 mb-2">
+                  <p className="text-xs text-slate-400">
                     {dbStatus.vectorCount} vectors indexed
                   </p>
                 )}
                 <button
                   onClick={reloadDatabase}
                   disabled={isReloading}
-                  className="mt-2 w-full flex items-center justify-center gap-2 px-3 py-2 bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700/50 rounded-lg text-xs text-slate-300 transition-all disabled:opacity-50"
+                  className="mt-3 w-full flex items-center justify-center gap-2 px-3 py-2 bg-slate-800/50 hover:bg-slate-700/50 border border-slate-700/50 rounded-lg text-xs text-slate-300 transition-all disabled:opacity-50"
                 >
                   <RotateCw
                     className={`w-3 h-3 ${isReloading ? "animate-spin" : ""}`}
@@ -407,29 +393,29 @@ export default function Home() {
           )}
 
           {/* GitHub Sync */}
-          <div className="mb-4">
-            <div className="p-3 sm:p-4 rounded-xl border border-white/10 backdrop-blur-sm bg-white/5">
+          <div className="mb-6">
+            <div className="p-4 rounded-xl border border-white/10 backdrop-blur-sm bg-white/5">
               <div className="flex items-center gap-2 mb-2">
                 <Github className="w-4 h-4 text-blue-400" />
                 <span className="text-sm font-medium text-white">
-                  GitHub Sync
+                  GitHub Auto-Sync
                 </span>
               </div>
               {lastSync && (
-                <p className="text-xs text-slate-400 mb-2">
-                  Last: {new Date(lastSync).toLocaleDateString()}
+                <p className="text-xs text-slate-400 mb-3">
+                  Last synced: {new Date(lastSync).toLocaleString()}
                 </p>
               )}
               {syncStatus && (
                 <div
-                  className={`mb-2 p-2 rounded-lg text-xs ${
+                  className={`mb-3 p-2 rounded-lg text-xs ${
                     syncStatus.success
                       ? "bg-emerald-500/10 text-emerald-400"
                       : "bg-rose-500/10 text-rose-400"
                   }`}
                 >
                   {syncStatus.success
-                    ? `✓ ${syncStatus.repos_synced} repos synced`
+                    ? `✓ Synced ${syncStatus.repos_synced} repositories`
                     : syncStatus.message || "Sync failed"}
                 </div>
               )}
@@ -451,14 +437,14 @@ export default function Home() {
           </div>
 
           {/* Stats */}
-          <div className="mb-4 space-y-2">
-            <div className="flex items-center justify-between p-2.5 rounded-lg bg-white/5 border border-white/10">
+          <div className="mb-6 space-y-3">
+            <div className="flex items-center justify-between p-3 rounded-lg bg-white/5 border border-white/10">
               <span className="text-xs text-slate-400">Messages</span>
               <span className="text-sm font-semibold text-white">
                 {messages.length}
               </span>
             </div>
-            <div className="flex items-center justify-between p-2.5 rounded-lg bg-white/5 border border-white/10">
+            <div className="flex items-center justify-between p-3 rounded-lg bg-white/5 border border-white/10">
               <span className="text-xs text-slate-400">Status</span>
               <span className="flex items-center gap-1.5 text-xs">
                 <span
@@ -474,22 +460,22 @@ export default function Home() {
           </div>
 
           {/* Tech Stack */}
-          <div className="mb-4">
-            <h3 className="text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">
+          <div className="mb-6">
+            <h3 className="text-xs font-semibold text-slate-400 mb-3 uppercase tracking-wider">
               Powered By
             </h3>
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-xs text-slate-300">
                 <Zap className="w-3 h-3 text-blue-400" />
-                <span>Next.js 15</span>
+                <span>Next.js 15 + Streaming</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-slate-300">
                 <Database className="w-3 h-3 text-purple-400" />
-                <span>Upstash Vector</span>
+                <span>Upstash Vector DB</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-slate-300">
                 <Brain className="w-3 h-3 text-pink-400" />
-                <span>Groq AI</span>
+                <span>Groq AI (Llama 3.3)</span>
               </div>
             </div>
           </div>
@@ -582,30 +568,30 @@ export default function Home() {
               {messages.map((msg, idx) => (
                 <div
                   key={idx}
-                  className={`flex gap-2 sm:gap-4 ${
+                  className={`flex gap-3 sm:gap-4 ${
                     msg.type === "user" ? "justify-end" : "justify-start"
                   } animate-fade-in`}
                 >
                   {msg.type === "ai" && (
-                    <div className="flex-shrink-0 w-7 h-7 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
+                    <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
                       <Bot className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                     </div>
                   )}
                   <div
-                    className={`max-w-[85%] sm:max-w-[80%] lg:max-w-[75%] rounded-2xl px-3 py-2.5 sm:px-5 sm:py-4 ${
+                    className={`max-w-[85%] sm:max-w-[75%] rounded-2xl px-4 py-3 sm:px-5 sm:py-4 ${
                       msg.type === "user"
                         ? "bg-gradient-to-br from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-500/20"
                         : "bg-white/5 backdrop-blur-sm text-slate-100 border border-white/10 shadow-lg"
                     }`}
                   >
-                    <div className="text-xs sm:text-sm leading-relaxed break-words">
+                    <div className="text-sm leading-relaxed break-words">
                       {msg.type === "ai" ? (
                         formatMessage(msg.content)
                       ) : (
                         <p>{msg.content}</p>
                       )}
                     </div>
-                    <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/10">
+                    <div className="flex items-center justify-between mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-white/10">
                       <p className="text-xs opacity-60">
                         {msg.timestamp.toLocaleTimeString([], {
                           hour: "2-digit",
@@ -615,17 +601,17 @@ export default function Home() {
                       {msg.type === "ai" && (
                         <button
                           onClick={() => copyToClipboard(msg.content, idx)}
-                          className="text-xs opacity-60 hover:opacity-100 transition-opacity flex items-center gap-1 px-2 py-1 rounded-lg hover:bg-white/5"
+                          className="text-xs opacity-60 hover:opacity-100 transition-opacity flex items-center gap-1.5 px-2 py-1 rounded-lg hover:bg-white/5"
                           title="Copy response"
                         >
                           {copiedIndex === idx ? (
                             <>
-                              <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-400" />
+                              <Check className="w-3.5 h-3.5 text-emerald-400" />
                               <span className="hidden sm:inline text-emerald-400">Copied</span>
                             </>
                           ) : (
                             <>
-                              <Copy className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                              <Copy className="w-3.5 h-3.5" />
                               <span className="hidden sm:inline">Copy</span>
                             </>
                           )}
@@ -634,7 +620,7 @@ export default function Home() {
                     </div>
                   </div>
                   {msg.type === "user" && (
-                    <div className="flex-shrink-0 w-7 h-7 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center shadow-lg">
+                    <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center shadow-lg">
                       <User className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                     </div>
                   )}
@@ -643,22 +629,22 @@ export default function Home() {
 
               {/* Streaming message */}
               {isStreaming && streamingMessage && (
-                <div className="flex gap-2 sm:gap-4 justify-start animate-fade-in">
-                  <div className="flex-shrink-0 w-7 h-7 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
+                <div className="flex gap-3 sm:gap-4 justify-start animate-fade-in">
+                  <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-lg">
                     <Bot className="w-4 h-4 sm:w-5 sm:h-5 text-white animate-pulse" />
                   </div>
-                  <div className="max-w-[85%] sm:max-w-[80%] lg:max-w-[75%] rounded-2xl px-3 py-2.5 sm:px-5 sm:py-4 bg-white/5 backdrop-blur-sm text-slate-100 border border-blue-500/30 shadow-lg shadow-blue-500/20">
-                    <div className="text-xs sm:text-sm leading-relaxed break-words">
+                  <div className="max-w-[85%] sm:max-w-[75%] rounded-2xl px-4 py-3 sm:px-5 sm:py-4 bg-white/5 backdrop-blur-sm text-slate-100 border border-blue-500/30 shadow-lg shadow-blue-500/20">
+                    <div className="text-sm leading-relaxed break-words">
                       {formatMessage(streamingMessage)}
                     </div>
-                    <div className="flex items-center gap-2 mt-2 pt-2 border-t border-white/10">
+                    <div className="flex items-center gap-2 mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-white/10">
                       <div className="flex gap-1">
-                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500 rounded-full animate-bounce"></div>
-                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500 rounded-full animate-bounce delay-100"></div>
-                        <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500 rounded-full animate-bounce delay-200"></div>
+                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce delay-100"></div>
+                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce delay-200"></div>
                       </div>
                       <p className="text-xs text-blue-400">
-                        Streaming...
+                        Streaming response...
                       </p>
                     </div>
                   </div>
@@ -680,27 +666,27 @@ export default function Home() {
           </div>
 
           {/* Input Area */}
-          <div className="border-t border-white/10 backdrop-blur-xl bg-gray-900/50 sticky bottom-0">
-            <div className="max-w-5xl mx-auto px-3 sm:px-6 py-3">
-              <form onSubmit={handleSubmit} className="space-y-2 sm:space-y-3">
-                <div className="flex gap-2">
+          <div className="border-t border-white/10 backdrop-blur-xl bg-gray-900/50">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
+              <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+                <div className="flex gap-2 sm:gap-3">
                   <input
                     ref={inputRef}
                     type="text"
                     value={question}
                     onChange={(e) => setQuestion(e.target.value)}
                     placeholder="Ask me anything..."
-                    className="flex-1 px-3 py-2.5 sm:px-5 sm:py-3.5 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent text-white placeholder-slate-500 transition-all text-sm"
+                    className="flex-1 px-4 py-3 sm:px-5 sm:py-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent text-white placeholder-slate-500 transition-all text-sm"
                     disabled={isLoading || isStreaming}
                   />
                   <button
                     type="submit"
                     disabled={isLoading || isStreaming || !question.trim()}
-                    className="px-3 py-2.5 sm:px-6 sm:py-3.5 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-medium flex items-center gap-2 shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 active:scale-95 flex-shrink-0"
+                    className="px-4 py-3 sm:px-6 sm:py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-medium flex items-center gap-2 shadow-lg shadow-blue-500/20 hover:shadow-xl hover:shadow-blue-500/30 hover:scale-105"
                   >
                     {isLoading || isStreaming ? (
                       <>
-                        <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                         <span className="hidden sm:inline">Thinking...</span>
                       </>
                     ) : (
@@ -714,16 +700,16 @@ export default function Home() {
 
                 {/* Quick questions - show when no messages */}
                 {messages.length === 0 && !isStreaming && (
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                    <span className="text-xs text-slate-500 py-1.5">
-                      Try:
+                  <div className="flex flex-wrap gap-2">
+                    <span className="text-xs text-slate-500 py-2">
+                      Try asking:
                     </span>
                     {sampleQuestions.slice(4).map((q) => (
                       <button
                         key={q}
                         type="button"
                         onClick={() => setQuestion(q)}
-                        className="text-xs bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-500/50 text-slate-300 hover:text-white px-2.5 py-1.5 rounded-lg transition-all"
+                        className="text-xs bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-500/50 text-slate-300 hover:text-white px-3 py-1.5 rounded-lg transition-all"
                         disabled={isLoading || isStreaming}
                       >
                         {q}
@@ -733,8 +719,9 @@ export default function Home() {
                 )}
               </form>
 
-              <p className="text-xs text-center text-slate-500 mt-2">
-                Powered by Next.js • Upstash • Groq AI
+              <p className="text-xs text-center text-slate-500 mt-3 sm:mt-4">
+                Powered by Next.js 15 • Upstash Vector • Groq AI • Real-time
+                Streaming
               </p>
             </div>
           </div>
