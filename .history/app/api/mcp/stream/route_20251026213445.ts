@@ -25,41 +25,6 @@ export async function POST(request: Request) {
       let fullAnswer = ""; // Store complete answer for learning
       
       try {
-        // Check external knowledge first (time, calculations, definitions, etc.)
-        const externalKnowledge = getExternalKnowledge(question);
-        if (externalKnowledge && externalKnowledge.confidence >= 0.9) {
-          // High confidence external answer - stream it directly
-          controller.enqueue(encoder.encode(`data: ${JSON.stringify({ type: "start" })}\n\n`));
-          
-          const response = `${externalKnowledge.answer}\n\n*By the way, I'm Diwan Malla's Digital Twin! If you want to know about my skills, projects, or experience, just ask!* 😊`;
-          fullAnswer = response;
-          
-          // Stream the answer
-          for (const char of response) {
-            controller.enqueue(encoder.encode(`data: ${JSON.stringify({ type: "token", content: char })}\n\n`));
-            await new Promise(resolve => setTimeout(resolve, 20));
-          }
-          
-          controller.enqueue(encoder.encode(`data: ${JSON.stringify({ type: "done" })}\n\n`));
-          controller.close();
-          
-          // Store the conversation for learning
-          const topics = extractTopics(question);
-          await storeConversation({
-            question,
-            answer: fullAnswer,
-            timestamp: new Date(),
-            feedback: undefined,
-            metadata: {
-              sources: [externalKnowledge.source],
-              confidence: externalKnowledge.confidence,
-              category: topics.join(", "),
-            },
-          });
-          
-          return;
-        }
-        
         // Handle casual conversations and greetings
         const casualGreetings =
           /^(hi|hello|hey|howdy|greetings|good morning|good afternoon|good evening|sup|wassup|yo)[\s!?.]*$/i;
@@ -247,42 +212,8 @@ What would you like to know? 😊`;
           results.slice(0, 5).map((r) => r.metadata?.title)
         );
 
-        // Check for external knowledge that might help
-        const externalInfo = getExternalKnowledge(question);
-        const externalContext = externalInfo 
-          ? `\n\nADDITIONAL CONTEXT:\n${externalInfo.answer}\n(Source: ${externalInfo.source})` 
-          : "";
-
         // Ensure we have context
         if (!context || context.trim().length === 0) {
-          // If no vector context but we have external knowledge, use it
-          if (externalInfo) {
-            const response = `${externalInfo.answer}\n\n*By the way, I'm Diwan Malla - if you'd like to know about my technical skills, projects, or experience, feel free to ask!* 😊`;
-            fullAnswer = response;
-            
-            controller.enqueue(encoder.encode(`data: ${JSON.stringify({ type: "start" })}\n\n`));
-            for (const char of response) {
-              controller.enqueue(encoder.encode(`data: ${JSON.stringify({ type: "token", content: char })}\n\n`));
-              await new Promise(resolve => setTimeout(resolve, 20));
-            }
-            controller.enqueue(encoder.encode(`data: ${JSON.stringify({ type: "done" })}\n\n`));
-            controller.close();
-            
-            const topics = extractTopics(question);
-            await storeConversation({
-              question,
-              answer: fullAnswer,
-              timestamp: new Date(),
-              feedback: undefined,
-              metadata: {
-                sources: [externalInfo.source],
-                confidence: externalInfo.confidence,
-                category: topics.join(", "),
-              },
-            });
-            return;
-          }
-          
           throw new Error(
             "No relevant information found in database. Please try rephrasing your question."
           );
@@ -291,7 +222,7 @@ What would you like to know? 😊`;
         const prompt = `You are Diwan Malla. Answer this question using ONLY the information provided below from your profile.
 
 YOUR PROFILE INFORMATION:
-${context}${externalContext}
+${context}
 
 QUESTION: ${question}
 
@@ -300,7 +231,6 @@ CRITICAL RULES:
 2. Use ONLY information from the profile data above - never fabricate or assume anything
 3. Be specific with numbers, technologies, achievements, and dates from the data
 4. If information isn't in the data, say "I don't have that specific information in my profile"
-5. If ADDITIONAL CONTEXT is provided (like current time, calculations, definitions), you can use that information naturally
 
 QUESTION-SPECIFIC GUIDANCE:
 - Identity questions ("name", "who are you"): Answer directly and concisely
@@ -310,7 +240,6 @@ QUESTION-SPECIFIC GUIDANCE:
 - Career/Goals questions: Current level, target roles, industries interested in
 - Achievements: Always include specific metrics (percentages, time saved, improvements)
 - Learning questions: Mention certifications, current learning focus, and learning agility examples
-- General knowledge questions: Use the ADDITIONAL CONTEXT if provided
 
 IMPORTANT: 
 - For projects, list: Job Tracker, PDFly, SangeetX, BrainiX (if mentioned in data)
