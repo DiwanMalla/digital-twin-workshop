@@ -19,7 +19,6 @@ import {
   ThumbsUp,
   ThumbsDown,
   BarChart3,
-  Briefcase,
 } from "lucide-react";
 
 type Message = {
