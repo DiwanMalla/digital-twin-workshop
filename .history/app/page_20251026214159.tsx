@@ -198,12 +198,9 @@ export default function Home() {
               } else if (data.type === "done") {
                 setIsStreaming(false);
                 setStatusMessage("");
-
-                console.log(
-                  "[Frontend] Received conversationId:",
-                  data.conversationId
-                );
-
+                
+                console.log("[Frontend] Received conversationId:", data.conversationId);
+                
                 // Add complete AI message with conversationId from backend
                 const aiMessage: Message = {
                   type: "ai",
@@ -211,9 +208,9 @@ export default function Home() {
                   timestamp: new Date(),
                   conversationId: data.conversationId, // Use ID from backend
                 };
-
+                
                 console.log("[Frontend] Created message:", aiMessage);
-
+                
                 setMessages((prev) => [...prev, aiMessage]);
                 setStreamingMessage("");
               } else if (data.type === "error") {
@@ -496,27 +493,6 @@ export default function Home() {
                   : "Initial Sync"}
               </button>
             </div>
-          </div>
-
-          {/* Analytics Link */}
-          <div className="mb-4">
-            <a
-              href="/analytics"
-              className="block p-3 sm:p-4 rounded-xl border border-emerald-500/30 backdrop-blur-sm bg-emerald-500/5 hover:bg-emerald-500/10 transition-all group"
-            >
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <BarChart3 className="w-4 h-4 text-emerald-400 group-hover:scale-110 transition-transform" />
-                  <span className="text-sm font-medium text-white">
-                    Analytics Dashboard
-                  </span>
-                </div>
-                <span className="text-xs text-emerald-400">→</span>
-              </div>
-              <p className="text-xs text-slate-400 mt-1">
-                View learning metrics & insights
-              </p>
-            </a>
           </div>
 
           {/* Stats */}
