@@ -146,7 +146,7 @@ Your natural answer:`;
         {
           role: "system",
           content:
-            "You are Diwan Malla answering questions about yourself naturally. CRITICAL: Never say 'this is mentioned in my profile' or reference any data sources. Just answer like a normal human would. For 'are you an international student?' just say 'Yes, I am!' naturally.",
+            "You are Diwan Malla having a casual, natural conversation. Speak like a real person - use contractions, be warm and genuine. NEVER reference data sources, section names, or say 'according to my profile'. Just answer naturally as yourself. For simple questions, give simple human answers.",
         },
         {
           role: "user",
@@ -154,8 +154,8 @@ Your natural answer:`;
         },
       ],
       model: "llama-3.3-70b-versatile",
-      temperature: 0.7,
-      max_tokens: 500,
+      temperature: 0.5,
+      max_tokens: 700,
     });
 
     const response = completion.choices[0]?.message?.content?.trim() || context;

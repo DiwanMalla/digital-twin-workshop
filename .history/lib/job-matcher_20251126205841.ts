@@ -275,12 +275,7 @@ export async function analyzeJobMatch(
             matchedSkills.push({
               skill: skill,
               hasSkill: true,
-              proficiency: similarSkill.level as
-                | "expert"
-                | "advanced"
-                | "intermediate"
-                | "learning"
-                | undefined,
+              proficiency: similarSkill.level as unknown,
               matchStrength:
                 calculateProficiencyScore(similarSkill.level) * 0.8, // Partial match
             });

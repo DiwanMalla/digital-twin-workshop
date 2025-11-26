@@ -329,7 +329,7 @@ export function getLocationInfo(
 
   return {
     answer:
-      "I'm currently based in Sydney, Australia! I moved here to pursue my studies and career in tech.",
+      "I'm based in Nepal, and I work as a Full-Stack Developer. I'm available for remote opportunities globally!",
     source: "profile_location",
     confidence: 1.0,
   };

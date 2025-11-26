@@ -1,46 +1,12 @@
-"use client";
-
-// Minimal type definitions for Web Speech API
-type SpeechRecognitionResult = {
-  [index: number]: { transcript: string };
-};
-
-interface SpeechRecognitionEvent extends Event {
-  results: SpeechRecognitionResult[];
-}
-
-interface SpeechRecognitionErrorEvent extends Event {
-  error: string;
-}
-
-interface SpeechRecognition {
-  continuous: boolean;
-  interimResults: boolean;
-  lang: string;
-  start(): void;
-  stop(): void;
-  onresult: ((event: SpeechRecognitionEvent) => void) | null;
-  onerror: ((event: SpeechRecognitionErrorEvent) => void) | null;
-  onend: (() => void) | null;
-}
-
-declare global {
-  interface Window {
-    SpeechRecognition: {
-      new (): SpeechRecognition;
-    };
-    webkitSpeechRecognition: {
-      new (): SpeechRecognition;
-    };
-  }
-}
 // Add global type declarations for browser SpeechRecognition
 declare global {
   interface Window {
-    SpeechRecognition: { new (): SpeechRecognition };
-    webkitSpeechRecognition: { new (): SpeechRecognition };
+    SpeechRecognition: typeof SpeechRecognition;
+    webkitSpeechRecognition: typeof SpeechRecognition;
   }
 }
+
+("use client");
 
 import { useState, useEffect, useRef } from "react";
 import {
@@ -376,11 +342,7 @@ export default function Home() {
         setIsListening(false);
         // Auto-submit the question
         setTimeout(
-          () =>
-            handleSubmit(
-              new Event("submit") as unknown as React.FormEvent<Element>,
-              transcript
-            ),
+          () => handleSubmit(new Event("submit") as any, transcript),
           100
         );
       };
@@ -410,7 +372,7 @@ export default function Home() {
     if (!initializeSpeechRecognition()) return;
 
     try {
-      recognitionRef.current!.start();
+      recognitionRef.current.start();
       setIsListening(true);
     } catch (error) {
       console.error("Error starting speech recognition:", error);
@@ -420,7 +382,7 @@ export default function Home() {
 
   const stopListening = () => {
     if (recognitionRef.current) {
-      recognitionRef.current!.stop();
+      recognitionRef.current.stop();
       setIsListening(false);
     }
   };

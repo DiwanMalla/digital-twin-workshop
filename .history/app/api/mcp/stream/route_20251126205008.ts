@@ -39,7 +39,7 @@ export async function POST(request: Request) {
             encoder.encode(`data: ${JSON.stringify({ type: "start" })}\n\n`)
           );
 
-          const response = externalKnowledge.answer;
+          const response = `${externalKnowledge.answer}\n\n*By the way, I'm Diwan Malla's Digital Twin! If you want to know about my skills, projects, or experience, just ask!* 😊`;
           fullAnswer = response;
 
           // Stream the answer
@@ -86,42 +86,44 @@ export async function POST(request: Request) {
 
         // Check for "how are you" type questions
         if (howAreYou.test(question.trim())) {
-          conversationalResponse = `Hey! 😊 I'm doing great, thanks for asking! Happy to chat about my work, projects, or anything else you'd like to know.
+          conversationalResponse = `Hey! 😊 I'm doing great, thanks for asking! I'm Diwan Malla's Digital Twin, and I'm here and ready to chat about his professional journey.
 
-Feel free to ask me about:
-• My technical skills and expertise
+I'm excited to share information about:
+• His technical skills and expertise
 • Work experience and achievements
-• Projects I've built
-• Career goals
+• Cool projects he's built
+• Career goals and what he's learning
 
-What would you like to know?`;
+How about you? What brings you here today? Feel free to ask me anything about Diwan's background! 🚀`;
         }
         // Check for "nice to meet you" type responses
         else if (niceToMeet.test(question.trim())) {
-          conversationalResponse = `Nice to meet you too! 🤝
+          conversationalResponse = `Nice to meet you too! 🤝 I'm really excited to chat with you!
 
-I'd love to tell you about:
-• My technical skills (React, Next.js, Python, and more!)
-• Projects like Job Tracker, PDFly, SangeetX, and BrainiX
-• My work experience and achievements
+I'm Diwan Malla's Digital Twin, and I love talking about:
+• His technical skills (React, Next.js, Python, and more!)
+• Awesome projects like Job Tracker, PDFly, SangeetX, and BrainiX
+• His work experience and achievements
 • Career goals and aspirations
 
-What would you like to know? 😊`;
+What would you like to know about him? I'm all ears! 👂`;
         }
         // Check for simple greetings
         else if (casualGreetings.test(question.trim())) {
-          conversationalResponse = `Hello! 👋 I'm Diwan Malla, a Full-Stack Developer based in Sydney.
+          conversationalResponse = `Hello! 👋 I'm Diwan Malla's Digital Twin - an AI assistant trained on his professional profile.
 
-I can tell you about:
-• Technical skills (React, Next.js, Node.js, Python, etc.)
+I can help you learn about:
+• Technical skills and expertise (React, Next.js, Node.js, Python, etc.)
 • Work experience and achievements
 • Portfolio projects (Job Tracker, PDFly, SangeetX, BrainiX)
 • Career goals and aspirations
+• Education and certifications
 
 Feel free to ask me anything! For example:
 - "What are your technical skills?"
 - "Tell me about your projects"
 - "What's your work experience?"
+- "What are you looking for in your next role?"
 
 What would you like to know? 😊`;
         }
@@ -245,7 +247,7 @@ What would you like to know? 😊`;
             const content = r.metadata?.content || r.metadata?.text || "";
             return content;
           })
-          .filter((part) => String(part).length > 10); // Filter out empty/short results
+          .filter((part) => part.length > 10); // Filter out empty/short results
 
         const context = contextParts.join("\n\n---\n\n");
 
@@ -266,7 +268,7 @@ What would you like to know? 😊`;
         if (!context || context.trim().length === 0) {
           // If no vector context but we have external knowledge, use it
           if (externalInfo) {
-            const response = externalInfo.answer;
+            const response = `${externalInfo.answer}\n\n*By the way, I'm Diwan Malla - if you'd like to know about my technical skills, projects, or experience, feel free to ask!* 😊`;
             fullAnswer = response;
 
             controller.enqueue(

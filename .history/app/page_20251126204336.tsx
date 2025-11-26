@@ -1,3 +1,4 @@
+
 "use client";
 
 // Minimal type definitions for Web Speech API
@@ -376,11 +377,7 @@ export default function Home() {
         setIsListening(false);
         // Auto-submit the question
         setTimeout(
-          () =>
-            handleSubmit(
-              new Event("submit") as unknown as React.FormEvent<Element>,
-              transcript
-            ),
+          () => handleSubmit(new Event("submit") as any, transcript),
           100
         );
       };

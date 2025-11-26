@@ -40,9 +40,11 @@ export default function JobMatcherPage() {
       setError("Please paste a job description");
       return;
     }
-    setLoading(true);
-    setError(null);
-    try {
+
+        &quot;You meet many requirements. Consider highlighting your strengths and addressing any skill gaps.&quot;
+      setLoading(true);
+      setError(null);
+
       const response = await fetch("/api/job-match", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -309,8 +311,8 @@ We're looking for a Full-Stack Developer with experience in:
               <div className="bg-slate-800/50 rounded-xl p-12 border border-slate-700 text-center">
                 <Briefcase className="w-16 h-16 text-slate-600 mx-auto mb-4" />
                 <p className="text-slate-400">
-                  Paste a job description and click &quot;Analyze Match&quot; to
-                  see how well you fit the role
+                  Paste a job description and click "Analyze Match" to see how
+                  well you fit the role
                 </p>
               </div>
             )}

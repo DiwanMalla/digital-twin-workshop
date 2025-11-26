@@ -1,47 +1,5 @@
 "use client";
 
-// Minimal type definitions for Web Speech API
-type SpeechRecognitionResult = {
-  [index: number]: { transcript: string };
-};
-
-interface SpeechRecognitionEvent extends Event {
-  results: SpeechRecognitionResult[];
-}
-
-interface SpeechRecognitionErrorEvent extends Event {
-  error: string;
-}
-
-interface SpeechRecognition {
-  continuous: boolean;
-  interimResults: boolean;
-  lang: string;
-  start(): void;
-  stop(): void;
-  onresult: ((event: SpeechRecognitionEvent) => void) | null;
-  onerror: ((event: SpeechRecognitionErrorEvent) => void) | null;
-  onend: (() => void) | null;
-}
-
-declare global {
-  interface Window {
-    SpeechRecognition: {
-      new (): SpeechRecognition;
-    };
-    webkitSpeechRecognition: {
-      new (): SpeechRecognition;
-    };
-  }
-}
-// Add global type declarations for browser SpeechRecognition
-declare global {
-  interface Window {
-    SpeechRecognition: { new (): SpeechRecognition };
-    webkitSpeechRecognition: { new (): SpeechRecognition };
-  }
-}
-
 import { useState, useEffect, useRef } from "react";
 import {
   Check,
@@ -103,7 +61,7 @@ export default function Home() {
   const [voiceEnabled, setVoiceEnabled] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const recognitionRef = useRef<SpeechRecognition | null>(null);
+  const recognitionRef = useRef<unknown>(null);
   const synthesisRef = useRef<SpeechSynthesisUtterance | null>(null);
 
   // Load database on mount
@@ -350,10 +308,8 @@ export default function Home() {
     if (typeof window === "undefined") return false;
 
     const SpeechRecognition =
-      (window as unknown as { SpeechRecognition?: unknown })
-        .SpeechRecognition ||
-      (window as unknown as { webkitSpeechRecognition?: unknown })
-        .webkitSpeechRecognition;
+      (window as unknown as { SpeechRecognition?: any }).SpeechRecognition ||
+      (window as unknown as { webkitSpeechRecognition?: any }).webkitSpeechRecognition;
 
     if (!SpeechRecognition) {
       alert(
@@ -363,35 +319,28 @@ export default function Home() {
     }
 
     if (!recognitionRef.current) {
-      recognitionRef.current =
-        new (SpeechRecognition as typeof window.SpeechRecognition)();
+      recognitionRef.current = new SpeechRecognition();
       recognitionRef.current.continuous = false;
       recognitionRef.current.interimResults = false;
       recognitionRef.current.lang = "en-US";
 
       recognitionRef.current.onresult = (event: unknown) => {
-        const resultEvent = event as SpeechRecognitionEvent;
-        const transcript = resultEvent.results[0][0].transcript;
+        const transcript = event.results[0][0].transcript;
         setQuestion(transcript);
         setIsListening(false);
         // Auto-submit the question
         setTimeout(
-          () =>
-            handleSubmit(
-              new Event("submit") as unknown as React.FormEvent<Element>,
-              transcript
-            ),
+          () => handleSubmit(new Event("submit") as unknown, transcript),
           100
         );
       };
 
       recognitionRef.current.onerror = (event: unknown) => {
-        const errorEvent = event as SpeechRecognitionErrorEvent;
-        console.error("Speech recognition error:", errorEvent.error);
+        console.error("Speech recognition error:", event.error);
         setIsListening(false);
-        if (errorEvent.error === "no-speech") {
+        if (event.error === "no-speech") {
           alert("No speech detected. Please try again.");
-        } else if (errorEvent.error === "not-allowed") {
+        } else if (event.error === "not-allowed") {
           alert(
             "Microphone access denied. Please enable microphone permissions."
           );
@@ -410,7 +359,7 @@ export default function Home() {
     if (!initializeSpeechRecognition()) return;
 
     try {
-      recognitionRef.current!.start();
+      recognitionRef.current.start();
       setIsListening(true);
     } catch (error) {
       console.error("Error starting speech recognition:", error);
@@ -420,7 +369,7 @@ export default function Home() {
 
   const stopListening = () => {
     if (recognitionRef.current) {
-      recognitionRef.current!.stop();
+      recognitionRef.current.stop();
       setIsListening(false);
     }
   };

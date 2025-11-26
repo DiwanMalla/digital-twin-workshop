@@ -245,7 +245,7 @@ What would you like to know? 😊`;
             const content = r.metadata?.content || r.metadata?.text || "";
             return content;
           })
-          .filter((part) => String(part).length > 10); // Filter out empty/short results
+          .filter((part) => part.length > 10); // Filter out empty/short results
 
         const context = contextParts.join("\n\n---\n\n");
 

@@ -1,5 +1,3 @@
-"use client";
-
 // Minimal type definitions for Web Speech API
 type SpeechRecognitionResult = {
   [index: number]: { transcript: string };
@@ -41,6 +39,8 @@ declare global {
     webkitSpeechRecognition: { new (): SpeechRecognition };
   }
 }
+
+("use client");
 
 import { useState, useEffect, useRef } from "react";
 import {
@@ -376,11 +376,7 @@ export default function Home() {
         setIsListening(false);
         // Auto-submit the question
         setTimeout(
-          () =>
-            handleSubmit(
-              new Event("submit") as unknown as React.FormEvent<Element>,
-              transcript
-            ),
+          () => handleSubmit(new Event("submit") as any, transcript),
           100
         );
       };
