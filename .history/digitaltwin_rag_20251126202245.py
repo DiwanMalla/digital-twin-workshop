@@ -240,13 +240,15 @@ def rag_query(index, groq_client, question):
         
         # Step 3: Generate response with context
         context = "\n\n".join(top_docs)
-        prompt = f"""Here is relevant information about yourself:
+        prompt = f"""Based on the following information about yourself, answer the question.
+Speak in first person as if you are describing your own background.
 
+Your Information:
 {context}
 
 Question: {question}
 
-Answer naturally as yourself. Be direct and conversational:"""
+Provide a helpful, professional response:"""
         
         response = generate_response_with_groq(groq_client, prompt)
         return response

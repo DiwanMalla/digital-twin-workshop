@@ -226,7 +226,7 @@ export default function Home() {
 
                 setMessages((prev) => [...prev, aiMessage]);
                 setStreamingMessage("");
-
+                
                 // Speak the response if voice is enabled
                 if (voiceEnabled && fullResponse) {
                   speak(fullResponse);
@@ -306,15 +306,11 @@ export default function Home() {
   // Voice Recognition Functions
   const initializeSpeechRecognition = () => {
     if (typeof window === "undefined") return false;
-
-    const SpeechRecognition =
-      (window as any).SpeechRecognition ||
-      (window as any).webkitSpeechRecognition;
-
+    
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    
     if (!SpeechRecognition) {
-      alert(
-        "Speech recognition is not supported in your browser. Please use Chrome or Edge."
-      );
+      alert("Speech recognition is not supported in your browser. Please use Chrome or Edge.");
       return false;
     }
 
@@ -329,10 +325,7 @@ export default function Home() {
         setQuestion(transcript);
         setIsListening(false);
         // Auto-submit the question
-        setTimeout(
-          () => handleSubmit(new Event("submit") as any, transcript),
-          100
-        );
+        setTimeout(() => handleSubmit(new Event("submit") as any, transcript), 100);
       };
 
       recognitionRef.current.onerror = (event: any) => {
@@ -341,9 +334,7 @@ export default function Home() {
         if (event.error === "no-speech") {
           alert("No speech detected. Please try again.");
         } else if (event.error === "not-allowed") {
-          alert(
-            "Microphone access denied. Please enable microphone permissions."
-          );
+          alert("Microphone access denied. Please enable microphone permissions.");
         }
       };
 
@@ -357,7 +348,7 @@ export default function Home() {
 
   const startListening = () => {
     if (!initializeSpeechRecognition()) return;
-
+    
     try {
       recognitionRef.current.start();
       setIsListening(true);
@@ -376,7 +367,7 @@ export default function Home() {
 
   const speak = (text: string) => {
     if (typeof window === "undefined" || !voiceEnabled) return;
-
+    
     // Stop any ongoing speech
     window.speechSynthesis.cancel();
 
@@ -941,13 +932,11 @@ export default function Home() {
                     type="text"
                     value={question}
                     onChange={(e) => setQuestion(e.target.value)}
-                    placeholder={
-                      isListening ? "Listening..." : "Ask me anything..."
-                    }
+                    placeholder={isListening ? "Listening..." : "Ask me anything..."}
                     className="flex-1 px-3 py-2.5 sm:px-5 sm:py-3.5 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent text-white placeholder-slate-500 transition-all text-sm"
                     disabled={isLoading || isStreaming || isListening}
                   />
-
+                  
                   {/* Voice Input Button */}
                   <button
                     type="button"
@@ -960,11 +949,7 @@ export default function Home() {
                     } disabled:opacity-50 disabled:cursor-not-allowed`}
                     title={isListening ? "Stop listening" : "Voice input"}
                   >
-                    {isListening ? (
-                      <MicOff className="w-4 h-4" />
-                    ) : (
-                      <Mic className="w-4 h-4" />
-                    )}
+                    {isListening ? <MicOff className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
                   </button>
 
                   {/* Voice Output Toggle */}
@@ -978,19 +963,9 @@ export default function Home() {
                           : "bg-purple-600 hover:bg-purple-700 text-white"
                         : "bg-white/5 hover:bg-white/10 text-slate-400"
                     }`}
-                    title={
-                      isSpeaking
-                        ? "Stop speaking"
-                        : voiceEnabled
-                        ? "Voice enabled"
-                        : "Voice disabled"
-                    }
+                    title={isSpeaking ? "Stop speaking" : voiceEnabled ? "Voice enabled" : "Voice disabled"}
                   >
-                    {voiceEnabled || isSpeaking ? (
-                      <Volume2 className="w-4 h-4" />
-                    ) : (
-                      <VolumeX className="w-4 h-4" />
-                    )}
+                    {voiceEnabled || isSpeaking ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
                   </button>
 
                   <button

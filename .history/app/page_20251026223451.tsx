@@ -56,13 +56,8 @@ export default function Home() {
   } | null>(null);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isListening, setIsListening] = useState(false);
-  const [isSpeaking, setIsSpeaking] = useState(false);
-  const [voiceEnabled, setVoiceEnabled] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const recognitionRef = useRef<any>(null);
-  const synthesisRef = useRef<SpeechSynthesisUtterance | null>(null);
 
   // Load database on mount
   useEffect(() => {
@@ -156,11 +151,11 @@ export default function Home() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent, voiceText?: string) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const textToSubmit = voiceText || question.trim();
-    if (!textToSubmit || isLoading || isStreaming) return;
+    if (!question.trim() || isLoading || isStreaming) return;
 
+    const userQuestion = question.trim();
     setQuestion("");
     setIsLoading(true);
     setIsStreaming(true);
@@ -170,7 +165,7 @@ export default function Home() {
     // Add user message immediately
     const newUserMessage: Message = {
       type: "user",
-      content: textToSubmit,
+      content: userQuestion,
       timestamp: new Date(),
     };
     setMessages((prev) => [...prev, newUserMessage]);
@@ -179,7 +174,7 @@ export default function Home() {
       const response = await fetch("/api/mcp/stream", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question: textToSubmit }),
+        body: JSON.stringify({ question: userQuestion }),
       });
 
       if (!response.ok) throw new Error("Stream failed");
@@ -226,11 +221,6 @@ export default function Home() {
 
                 setMessages((prev) => [...prev, aiMessage]);
                 setStreamingMessage("");
-
-                // Speak the response if voice is enabled
-                if (voiceEnabled && fullResponse) {
-                  speak(fullResponse);
-                }
               } else if (data.type === "error") {
                 throw new Error(data.message);
               }
@@ -300,118 +290,6 @@ export default function Home() {
     if (confirm("Are you sure you want to clear the chat history?")) {
       setMessages([]);
       setStreamingMessage("");
-    }
-  };
-
-  // Voice Recognition Functions
-  const initializeSpeechRecognition = () => {
-    if (typeof window === "undefined") return false;
-
-    const SpeechRecognition =
-      (window as any).SpeechRecognition ||
-      (window as any).webkitSpeechRecognition;
-
-    if (!SpeechRecognition) {
-      alert(
-        "Speech recognition is not supported in your browser. Please use Chrome or Edge."
-      );
-      return false;
-    }
-
-    if (!recognitionRef.current) {
-      recognitionRef.current = new SpeechRecognition();
-      recognitionRef.current.continuous = false;
-      recognitionRef.current.interimResults = false;
-      recognitionRef.current.lang = "en-US";
-
-      recognitionRef.current.onresult = (event: any) => {
-        const transcript = event.results[0][0].transcript;
-        setQuestion(transcript);
-        setIsListening(false);
-        // Auto-submit the question
-        setTimeout(
-          () => handleSubmit(new Event("submit") as any, transcript),
-          100
-        );
-      };
-
-      recognitionRef.current.onerror = (event: any) => {
-        console.error("Speech recognition error:", event.error);
-        setIsListening(false);
-        if (event.error === "no-speech") {
-          alert("No speech detected. Please try again.");
-        } else if (event.error === "not-allowed") {
-          alert(
-            "Microphone access denied. Please enable microphone permissions."
-          );
-        }
-      };
-
-      recognitionRef.current.onend = () => {
-        setIsListening(false);
-      };
-    }
-
-    return true;
-  };
-
-  const startListening = () => {
-    if (!initializeSpeechRecognition()) return;
-
-    try {
-      recognitionRef.current.start();
-      setIsListening(true);
-    } catch (error) {
-      console.error("Error starting speech recognition:", error);
-      setIsListening(false);
-    }
-  };
-
-  const stopListening = () => {
-    if (recognitionRef.current) {
-      recognitionRef.current.stop();
-      setIsListening(false);
-    }
-  };
-
-  const speak = (text: string) => {
-    if (typeof window === "undefined" || !voiceEnabled) return;
-
-    // Stop any ongoing speech
-    window.speechSynthesis.cancel();
-
-    // Clean up the text for better speech
-    const cleanText = text
-      .replace(/\*\*/g, "") // Remove markdown bold
-      .replace(/#{1,6}\s/g, "") // Remove markdown headers
-      .replace(/[•]/g, "") // Remove bullets
-      .replace(/\n{2,}/g, ". ") // Replace multiple newlines with period
-      .replace(/\n/g, ", "); // Replace single newlines with comma
-
-    synthesisRef.current = new SpeechSynthesisUtterance(cleanText);
-    synthesisRef.current.rate = 1.0;
-    synthesisRef.current.pitch = 1.0;
-    synthesisRef.current.volume = 1.0;
-
-    synthesisRef.current.onstart = () => setIsSpeaking(true);
-    synthesisRef.current.onend = () => setIsSpeaking(false);
-    synthesisRef.current.onerror = () => setIsSpeaking(false);
-
-    window.speechSynthesis.speak(synthesisRef.current);
-  };
-
-  const stopSpeaking = () => {
-    if (typeof window !== "undefined") {
-      window.speechSynthesis.cancel();
-      setIsSpeaking(false);
-    }
-  };
-
-  const toggleVoice = () => {
-    const newState = !voiceEnabled;
-    setVoiceEnabled(newState);
-    if (!newState) {
-      stopSpeaking();
     }
   };
 
@@ -941,58 +819,10 @@ export default function Home() {
                     type="text"
                     value={question}
                     onChange={(e) => setQuestion(e.target.value)}
-                    placeholder={
-                      isListening ? "Listening..." : "Ask me anything..."
-                    }
+                    placeholder="Ask me anything..."
                     className="flex-1 px-3 py-2.5 sm:px-5 sm:py-3.5 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-transparent text-white placeholder-slate-500 transition-all text-sm"
-                    disabled={isLoading || isStreaming || isListening}
-                  />
-
-                  {/* Voice Input Button */}
-                  <button
-                    type="button"
-                    onClick={isListening ? stopListening : startListening}
                     disabled={isLoading || isStreaming}
-                    className={`px-3 py-2.5 rounded-xl transition-all duration-200 flex items-center gap-2 flex-shrink-0 ${
-                      isListening
-                        ? "bg-red-600 hover:bg-red-700 text-white animate-pulse"
-                        : "bg-emerald-600 hover:bg-emerald-700 text-white"
-                    } disabled:opacity-50 disabled:cursor-not-allowed`}
-                    title={isListening ? "Stop listening" : "Voice input"}
-                  >
-                    {isListening ? (
-                      <MicOff className="w-4 h-4" />
-                    ) : (
-                      <Mic className="w-4 h-4" />
-                    )}
-                  </button>
-
-                  {/* Voice Output Toggle */}
-                  <button
-                    type="button"
-                    onClick={isSpeaking ? stopSpeaking : toggleVoice}
-                    className={`px-3 py-2.5 rounded-xl transition-all duration-200 flex items-center gap-2 flex-shrink-0 ${
-                      voiceEnabled || isSpeaking
-                        ? isSpeaking
-                          ? "bg-purple-600 hover:bg-purple-700 text-white animate-pulse"
-                          : "bg-purple-600 hover:bg-purple-700 text-white"
-                        : "bg-white/5 hover:bg-white/10 text-slate-400"
-                    }`}
-                    title={
-                      isSpeaking
-                        ? "Stop speaking"
-                        : voiceEnabled
-                        ? "Voice enabled"
-                        : "Voice disabled"
-                    }
-                  >
-                    {voiceEnabled || isSpeaking ? (
-                      <Volume2 className="w-4 h-4" />
-                    ) : (
-                      <VolumeX className="w-4 h-4" />
-                    )}
-                  </button>
-
+                  />
                   <button
                     type="submit"
                     disabled={isLoading || isStreaming || !question.trim()}
@@ -1011,24 +841,6 @@ export default function Home() {
                     )}
                   </button>
                 </div>
-
-                {/* Voice Status Indicator */}
-                {(isListening || isSpeaking) && (
-                  <div className="flex items-center justify-center gap-2 text-xs">
-                    {isListening && (
-                      <span className="flex items-center gap-1.5 text-emerald-400">
-                        <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
-                        Listening...
-                      </span>
-                    )}
-                    {isSpeaking && (
-                      <span className="flex items-center gap-1.5 text-purple-400">
-                        <span className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></span>
-                        Speaking...
-                      </span>
-                    )}
-                  </div>
-                )}
 
                 {/* Quick questions - show when no messages */}
                 {messages.length === 0 && !isStreaming && (
@@ -1050,7 +862,7 @@ export default function Home() {
               </form>
 
               <p className="text-xs text-center text-slate-500 mt-2">
-                🎤 Voice-enabled • Powered by Next.js • Upstash • Groq AI
+                Powered by Next.js • Upstash • Groq AI
               </p>
             </div>
           </div>

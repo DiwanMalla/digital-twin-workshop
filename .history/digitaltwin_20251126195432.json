@@ -1,0 +1,861 @@
+{
+  "personal": {
+    "name": "Diwan Malla",
+    "title": "Full-Stack Developer",
+    "location": "Sydney, Australia",
+    "summary": "Full Stack developer specializing in React.js, Material UI, and UX-driven design. Certified IBM Full Stack Development and Meta Front-End Specialization. Experienced in building responsive web applications, improving UI performance, and collaborating with cross-functional teams to deliver exceptional digital experiences.",
+    "elevator_pitch": "Hi, I'm Diwan, a Full-Stack Developer focused on creating high-performance, intuitive user interfaces and AI-powered web applications. I combine strong front-end skills with backend expertise to deliver scalable and efficient solutions.",
+    "contact": {
+      "phone": "+61-0452140630",
+      "email": "malladipin@gmail.com",
+      "linkedin": "https://www.linkedin.com/in/diwanmalla/",
+      "github": "https://github.com/diwanmalla",
+      "portfolio": "https://www.diwanmalla.com.au"
+    }
+  },
+  "salary_location": {
+    "current_salary": "$85,000 - $95,000 AUD",
+    "salary_expectations": {
+      "mid_level_roles": "$95,000 - $115,000 AUD",
+      "senior_roles": "$115,000 - $135,000 AUD",
+      "note": "Open to discussing compensation based on role complexity, growth opportunities, and technology stack"
+    },
+    "location_preferences": [
+      "Sydney CBD",
+      "Remote",
+      "Hybrid",
+      "Newcastle",
+      "Central Coast",
+      "Brisbane",
+      "Gold Coast",
+      "Canberra"
+    ],
+    "relocation_willing": true,
+    "relocation_details": "Open to relocation within Australia for the right opportunity with relocation support",
+    "remote_experience": "3+ years remote collaboration experience across distributed teams",
+    "remote_setup": "Professional home office setup with high-speed internet, dedicated workspace",
+    "travel_availability": "Available for interstate travel up to 25%, flexible for team collaboration",
+    "work_authorization": "International student, immediate to work, happy to volunteer",
+    "start_availability": "Immediate, happy to volunteer"
+  },
+  "experience": [
+    {
+      "company": "Barnamala Tech",
+      "title": "Full-Stack Developer",
+      "duration": "Feb 2025 – Present",
+      "company_context": "Tech startup focusing on SaaS applications and UX-driven web solutions",
+      "team_structure": "Collaborated with designers and stakeholders in an agile team",
+      "achievements_star": [
+        {
+          "situation": "Need for responsive and efficient UI components across 5 client projects with inconsistent codebases",
+          "task": "Improve UI load speed, responsiveness, and establish component library as technical lead",
+          "action": "Developed reusable React and Material UI component library with TypeScript. Implemented performance optimizations including code-splitting, lazy loading, and memoization. Created comprehensive Storybook documentation",
+          "result": "Enhanced load speed by 35%, improved user satisfaction metrics by 28%, reduced component development time by 50% through reusability",
+          "quantified_impact": {
+            "load_speed_improvement": "35%",
+            "user_satisfaction": "28% increase",
+            "development_efficiency": "50% faster component creation",
+            "code_reusability": "70% of components reused across projects"
+          },
+          "technologies_detail": [
+            "Next.js 15",
+            "React 19",
+            "Material UI v6",
+            "TypeScript",
+            "Storybook",
+            "Jest",
+            "React Testing Library"
+          ],
+          "team_collaboration": "Mentored 2 junior developers on React best practices and TypeScript patterns"
+        },
+        {
+          "situation": "Manual deployment process taking 4+ hours and causing production errors, affecting 5 client deployments per week",
+          "task": "Automate deployment process to reduce time and eliminate human error",
+          "action": "Built comprehensive CI/CD pipelines using GitHub Actions with automated testing, linting, type-checking, and multi-environment deployments. Implemented rollback strategies and deployment notifications",
+          "result": "Reduced deployment time by 40% (from 4 hours to 2.4 hours), eliminated 95% of deployment-related bugs, enabled 3 deployments per day capacity",
+          "quantified_impact": {
+            "time_reduction": "40% (4h → 2.4h)",
+            "error_reduction": "95% fewer deployment bugs",
+            "deployment_frequency": "1 per week → 3 per day capability",
+            "team_productivity": "Freed 10 hours per week of developer time"
+          },
+          "technologies_detail": [
+            "GitHub Actions",
+            "Docker",
+            "AWS EC2",
+            "Vercel",
+            "Jest",
+            "ESLint",
+            "TypeScript",
+            "Slack notifications"
+          ],
+          "leadership_impact": "Trained team of 4 developers on CI/CD best practices, created runbook documentation"
+        }
+      ],
+      "technical_skills_used": [
+        "Next.js",
+        "React",
+        "Material UI",
+        "Python (Flask)",
+        "MongoDB",
+        "AWS",
+        "GitHub Actions",
+        "NextAuth",
+        "JWT"
+      ],
+      "leadership_examples": [
+        "Collaborated cross-functionally",
+        "Led UI/UX optimization discussions"
+      ],
+      "team_size_managed": 2
+    },
+    {
+      "company": "Hamro Chautari",
+      "title": "Junior Web Developer",
+      "duration": "April 2023 – Nov 2024",
+      "company_context": "Client-focused web development and SaaS solutions",
+      "achievements_star": [
+        {
+          "situation": "Client applications lacked UX consistency and had performance issues with 1000+ concurrent users",
+          "task": "Improve engagement, UI consistency, and application performance as lead frontend developer",
+          "action": "Developed front-end using React, Next.js, Tailwind CSS with code-splitting and lazy loading. Integrated REST APIs with PostgreSQL backend, implemented caching strategies, and established design system for consistency",
+          "result": "Boosted engagement metrics by 25%, reduced initial load time by 40%, improved Lighthouse performance score from 65 to 92",
+          "quantified_impact": {
+            "engagement_increase": "25%",
+            "load_time_reduction": "40%",
+            "lighthouse_score": "65 → 92",
+            "user_satisfaction": "Positive feedback from 85% of surveyed users"
+          },
+          "technologies_detail": [
+            "React 18",
+            "Next.js 14",
+            "Tailwind CSS",
+            "Node.js",
+            "Express",
+            "PostgreSQL",
+            "AWS EC2",
+            "Vercel"
+          ],
+          "challenges_overcome": "Optimized database queries reducing API response time from 3s to 0.5s, implemented Redis caching for frequently accessed data"
+        }
+      ],
+      "technical_skills_used": [
+        "React",
+        "Next.js",
+        "Tailwind CSS",
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "AWS",
+        "Vercel",
+        "CI/CD"
+      ],
+      "team_size_managed": 1
+    },
+    {
+      "company": "Bihani Tech",
+      "title": "Front-End Web Developer",
+      "duration": "Sep 2021 – Aug 2022",
+      "company_context": "Local web development projects and WordPress customizations",
+      "achievements_star": [
+        {
+          "situation": "Existing front-end had low user satisfaction",
+          "task": "Improve front-end performance and UX",
+          "action": "Delivered React.js and Bootstrap front-end systems, customized WordPress sites",
+          "result": "Improved UI satisfaction by 35%"
+        }
+      ],
+      "technical_skills_used": [
+        "JavaScript",
+        "React.js",
+        "Bootstrap",
+        "WordPress",
+        "Git",
+        "HTML5",
+        "CSS3",
+        "REST APIs"
+      ]
+    },
+    {
+      "company": "Adira Tech",
+      "title": "Web Developer Intern",
+      "duration": "Nov 2020 – Jul 2021",
+      "achievements_star": [
+        {
+          "situation": "Assist in front-end development tasks",
+          "task": "Support senior developers",
+          "action": "Debugged UI issues, developed small internal projects using JavaScript and Bootstrap",
+          "result": "Improved front-end stability and gained hands-on Agile experience"
+        }
+      ],
+      "technical_skills_used": [
+        "JavaScript",
+        "React.js",
+        "Bootstrap",
+        "WordPress",
+        "Git"
+      ]
+    }
+  ],
+  "projects_portfolio": [
+    {
+      "name": "Job Tracker – Application Management System",
+      "duration": "Oct 2025",
+      "description": "Full-stack job tracking platform with analytics dashboard and secure document management.",
+      "technologies": [
+        "Next.js 15",
+        "PostgreSQL",
+        "Vercel Blob Storage",
+        "React"
+      ],
+      "impact": "Served 10+ active users, streamlined resume/cover letter management for recruiters"
+    },
+    {
+      "name": "PDFly – Professional PDF Processing Platform",
+      "duration": "Aug 2025 - Oct 2025",
+      "description": "PDF APIs for secure processing and file encryption",
+      "technologies": ["Python", "React"],
+      "impact": "Processes 100+ documents daily, improved user satisfaction by 45%"
+    },
+    {
+      "name": "SangeetX – Music Streaming Platform",
+      "duration": "July 2025 - Sep 2025",
+      "description": "Full-stack streaming app with admin dashboard",
+      "technologies": ["Next.js", "TypeScript", "Cloudinary"],
+      "impact": "Serves 50+ users, reduced admin time by 60%, improved media loading speed by 50%"
+    },
+    {
+      "name": "BrainiX – AI Powered LMS",
+      "duration": "Feb 2025 - June 2025",
+      "description": "AI-driven learning platform with real-time chat and Stripe payments",
+      "technologies": [
+        "Next.js",
+        "React",
+        "OpenAI APIs",
+        "Pusher",
+        "Stripe API"
+      ],
+      "impact": "Led 3-member team, increased engagement by 300%, achieved 94.7% course completion rate"
+    }
+      ,
+      {
+        "name": "Job Tracker — Full-Stack Job Application Management",
+        "slug": "job-tracker",
+        "images": ["https://res.cloudinary.com/dd8lg68uc/image/upload/v1759836433/diwan-admin/file_1759836433882.jpg"],
+        "description": "Job Tracker is a modern, full-stack job application management system designed to help job seekers organize, track, and optimize their job search. Built with Next.js 15, TypeScript, Prisma, and Tailwind CSS, it provides a clean, responsive, and interactive interface for managing applications, analytics, and document uploads.\n\nCore Features: Application Management, Smart Analytics Dashboard, Document Management, Secure Authentication, Public Sharing, Follow-up Reminders, Responsive UI, Real-time Updates, Dark Mode Ready.\nTech Stack: Next.js 15, React 19, TypeScript, TailwindCSS, Prisma ORM + PostgreSQL, NextAuth.js, Vercel Blob Storage, Vercel Analytics, ESLint, SOLID Principles, Service Pattern.\nMission: Simplify and optimize the job search process.\nLive Demo: https://job-tracker-zeta-wheat.vercel.app",
+        "client": "Personal / Portfolio Project",
+        "projectCategory": ["Web Development", "Mobile App Development", "Database Management"],
+        "tags": ["javascript", "reactjs"],
+        "livePreview": "https://job-tracker-zeta-wheat.vercel.app",
+        "status": "publish"
+      },
+      {
+        "name": "GenZ Memories — Social Video Platform",
+        "slug": "genz-memories",
+        "images": ["https://res.cloudinary.com/dd8lg68uc/image/upload/v1759836320/diwan-admin/file_1759836320495.png"],
+        "description": "GenZ Memories is a modern social media platform built to preserve Gen Z activism and social movements through short-form videos and storytelling. Developed using Next.js 15, TypeScript, and Prisma, it combines the sleek feel of TikTok with the mission of documenting social impact.\n\nCore Features: Video Upload & Sharing, Engagement System, Discovery Feed, Custom Profiles, Admin Dashboard, Real-time Notifications & Chat, Modern UI/UX, AI Roadmap (Upcoming).\nTech Stack: Next.js 15, React 19, TypeScript, TailwindCSS, Prisma ORM + PostgreSQL, NextAuth.js v5, Cloudinary, Socket.io, FFmpeg, Radix UI, Shadcn UI, Vercel Analytics.\nMission: Archive voices of change.\nLive Demo: https://genz-memories.vercel.app",
+        "client": "Personal / Portfolio Project",
+        "projectCategory": ["Web Development", "Mobile App Development", "Database Management"],
+        "tags": ["javascript", "reactjs"],
+        "livePreview": "https://genz-memories.vercel.app",
+        "status": "publish"
+      },
+      {
+        "name": "PDFly — Smart PDF Management Platform",
+        "slug": "pdfly-smart-pdf-management-platform",
+        "images": ["https://res.cloudinary.com/dd8lg68uc/image/upload/v1759836101/diwan-admin/file_1759836101596.jpg", "https://res.cloudinary.com/dd8lg68uc/image/upload/v1759836101/diwan-admin/file_1759836101797.jpg"],
+        "description": "PDFly is a next-generation web-based PDF management tool built with Next.js 15, allowing users to efficiently compress, merge, split, convert, and secure their PDF files through a simple and intuitive interface.\n\nKey Features: Fast Performance, Secure Processing, Multi-Tool Support, AI Assistant (Coming Soon), Light/Dark Mode.\nTech Stack: Next.js 15, React 19, TypeScript, TailwindCSS, Shadcn UI, Node.js (API Routes), Prisma ORM, PostgreSQL, PDF-Lib, Sharp, Vercel.\nObjective: Simplify document handling for everyone.\nLive Demo: https://pdf-fast-fly.vercel.app/",
+        "client": "Personal Project",
+        "projectCategory": ["Web Development", "Mobile App Development", "Database Management"],
+        "tags": ["reactjs"],
+        "livePreview": "https://pdf-fast-fly.vercel.app/",
+        "status": "publish"
+      },
+      {
+        "name": "BrainiX - AI-Powered E-Learning Platform",
+        "slug": "brainix-ai-learning-platform",
+        "images": ["https://res.cloudinary.com/dd8lg68uc/image/upload/v1759835908/diwan-admin/file_1759835908460.jpg"],
+        "description": "BrainiX is a next-generation AI-powered e-learning platform designed to revolutionize online education through personalized, intelligent, and interactive learning experiences. Built using Next.js 14, TypeScript, Prisma, and PostgreSQL.\n\nKey Highlights: Personalized Learning, Smart Assessments, Secure Payments, Real-Time Communication, Course Management, Student Dashboard, Modern Design, Authentication.\nTech Stack: Next.js 14, React, TypeScript, TailwindCSS, Node.js (API Routes), Prisma ORM, PostgreSQL, Clerk, Stripe, Shadcn/UI, Radix UI.\nObjective: Create an all-in-one educational ecosystem.\nLive Demo: https://braini-x-one.vercel.app",
+        "client": "University Capstone Project (BIT - Diwan Malla)",
+        "projectCategory": ["Web Development", "UI/UX Design", "Database Management", "AI/ML"],
+        "tags": ["html", "css", "javascript", "reactjs", "database"],
+        "livePreview": "https://braini-x-one.vercel.app",
+        "status": "publish"
+      },
+      {
+        "name": "HTML Editor Pro",
+        "slug": "html-editor-pro",
+        "images": ["https://res.cloudinary.com/dd8lg68uc/image/upload/v1759366182/diwan-admin/file_1759366182320.png"],
+        "description": "HTML Editor Pro is a modern, feature-rich HTML, CSS, and JavaScript editor with real-time preview, syntax highlighting, and beautiful UI design.\n\nCore Features: Real-time Preview, Multi-tab Editor, Dark/Light Theme, Responsive Design, Fast Performance, Monaco Editor Integration, Syntax Highlighting, One-click Copy, Download Export, Reset Functionality, Fullscreen Mode, Glass Morphism, Gradient Accents, Smooth Animations, Interactive Elements, Clean Layout.\nTech Stack: Next.js 15.5.4, React 19.1.0, TypeScript 5, Tailwind CSS 4, Framer Motion, Lucide React, Monaco Editor, Next Themes, ESLint, Turbopack.\nLive Demo: https://html-editor-pro-six.vercel.app/",
+        "client": "Personal Project",
+        "projectCategory": ["Web Development", "UI/UX Design"],
+        "tags": ["html", "css", "javascript", "reactjs"],
+        "livePreview": "https://html-editor-pro-six.vercel.app/",
+        "status": "publish"
+      },
+      {
+        "name": "Markdown to PDF Converter",
+        "slug": "markdown-to-pdf-converter",
+        "images": ["https://res.cloudinary.com/dd8lg68uc/image/upload/v1758714426/diwan-admin/file_1758714425971.png"],
+        "description": "Markdown to PDF Converter is a modern, feature-rich Markdown editor with live preview and PDF export capabilities.\n\nCore Features: Real-time Preview, PDF Export, Monaco Editor, GitHub-style Rendering, Secure, Responsive Design, Fast & Modern, Smart Filename Generation, Beautiful UI.\nTech Stack: Next.js 15, React 19, TypeScript 5, Tailwind CSS 4, GitHub Markdown CSS, Glassmorphism Design, Monaco Editor, Marked.js 15, DOMPurify, Remark GFM, html2pdf.js.\nLive Demo: https://markdown-to-pdf-preview.vercel.app/",
+        "client": "Personal",
+        "projectCategory": ["Web Development", "UI/UX Design"],
+        "tags": ["html", "css", "javascript", "reactjs", "database"],
+        "livePreview": "https://markdown-to-pdf-preview.vercel.app/",
+        "status": "publish"
+      },
+      {
+        "name": "SangeetX – A Modern Music Streaming Experience",
+        "slug": "sangeetx-music-streaming",
+        "images": ["https://res.cloudinary.com/dd8lg68uc/image/upload/v1753766117/diwan-admin/file_1753766117741.jpg", "https://res.cloudinary.com/dd8lg68uc/image/upload/v1753765819/diwan-admin/file_1753765819643.jpg"],
+        "description": "SangeetX is a modern, full-featured music streaming platform that provides both guest and authenticated experiences. Built with Next.js 15 and React 19, it offers a comprehensive solution for music discovery, playback, and management.\n\nKey Highlights: Modern UI/UX, Full-Stack Solution, Real-time Features, Mobile-First, Admin Dashboard, Guest Experience.\nTech Stack: Next.js 15, React 19, TypeScript 5, Tailwind CSS 4, Lucide React, Clerk, PostgreSQL, Prisma ORM, Cloud Storage Integration, Turbopack, ESLint, Prisma Studio.\nLive Demo: https://www.sangeetx.online",
+        "client": "Personal",
+        "projectCategory": ["Web Development", "UI/UX Design"],
+        "tags": ["javascript", "reactjs", "database"],
+        "livePreview": "https://www.sangeetx.online",
+        "status": "publish"
+      },
+      {
+        "name": "ChatSphere",
+        "slug": "chatsphere-real-time-chat",
+        "images": ["https://res.cloudinary.com/dd8lg68uc/image/upload/v1742803470/diwan-admin/file_1742803466977.webp", "https://res.cloudinary.com/dd8lg68uc/image/upload/v1742803475/diwan-admin/file_1742803472911.jpg"],
+        "description": "ChatSphere is a real-time chat application built with the MERN stack (MongoDB, Express, React, Node.js) and Socket.io for instant messaging. It enables users to register, log in, and chat with friends in real-time. The app supports private messaging, group chats, media sharing, and user authentication with JWT.\n\nFeatures: Real-Time Messaging, User Authentication, One-on-One & Group Chats, Media & File Sharing, Modern & Responsive UI, Online/Offline Status Indication.\nTech Stack: React.js, Tailwind CSS, Node.js, Express.js, MongoDB, Socket.io, JWT, bcrypt.js, Render.\nLive Demo: https://chatsphere-p8zu.onrender.com/welcome",
+        "client": "Personal Project",
+        "projectCategory": ["Web Development"],
+        "tags": ["javascript", "reactjs", "nodejs", "database"],
+        "livePreview": "https://chatsphere-p8zu.onrender.com",
+        "status": "publish"
+      },
+      {
+        "name": "Product Store",
+        "slug": "product-store",
+        "images": ["https://res.cloudinary.com/dd8lg68uc/image/upload/v1741604559/diwan-admin/file_1741604554088.webp", "https://res.cloudinary.com/dd8lg68uc/image/upload/v1741604571/diwan-admin/file_1741604569316.jpg", "https://res.cloudinary.com/dd8lg68uc/image/upload/v1741604574/diwan-admin/file_1741604569312.jpg", "https://res.cloudinary.com/dd8lg68uc/image/upload/v1741604575/diwan-admin/file_1741604569318.jpg"],
+        "description": "Product Store is a full-stack e-commerce store project built using pnpm, Vite, React (frontend), Node.js (backend), and MongoDB (database).\n\nFeatures: Frontend with React and Zustand, Backend with Node.js, Database with MongoDB.\nShowcases core full-stack development skills and typical e-commerce features.\nLive Preview: https://product-store-m4ol.onrender.com",
+        "client": "Diwan",
+        "projectCategory": ["Web Development", "Mobile App Development", "UI/UX Design"],
+        "tags": ["reactjs", "nodejs", "database"],
+        "livePreview": "https://product-store-m4ol.onrender.com",
+        "status": "publish"
+      },
+      {
+        "name": "My Weather App (Mausam) 🌦️",
+        "slug": "my-weather-app",
+        "images": ["https://res.cloudinary.com/dd8lg68uc/image/upload/v1737257938/diwan-admin/file_1737257937465.jpg", "https://res.cloudinary.com/dd8lg68uc/image/upload/v1737257939/diwan-admin/file_1737257937476.jpg", "https://res.cloudinary.com/dd8lg68uc/image/upload/v1737257939/diwan-admin/file_1737257937475.jpg", "https://res.cloudinary.com/dd8lg68uc/image/upload/v1737257941/diwan-admin/file_1737257937478.jpg"],
+        "description": "My Weather App (Mausam) is a real-time weather app built with Next.js, React.js, TypeScript, TanStack Query, Shadcn UI, Recharts, and Tailwind CSS.\n\nKey Features: Real-time weather updates, Dark/Light Mode Toggle, Interactive charts, Search history, City favorites, Clean and responsive UI.\nTech Stack: Next.js, React.js, TypeScript, TanStack Query, Shadcn UI, Recharts, Tailwind CSS.\nLive Preview: https://mausam-weather.vercel.app/",
+        "client": "Personal",
+        "projectCategory": ["Web Development"],
+        "tags": ["html", "css", "javascript", "reactjs", "database"],
+        "livePreview": "https://mausam-weather.vercel.app/",
+        "status": "publish"
+      },
+      {
+        "name": "SmartSpend",
+        "slug": "smartspend-budget-tracker",
+        "images": ["https://res.cloudinary.com/dd8lg68uc/image/upload/v1734830108/diwan-admin/file_1734830105291.jpg", "https://res.cloudinary.com/dd8lg68uc/image/upload/v1734830107/diwan-admin/file_1734830105288.jpg", "https://res.cloudinary.com/dd8lg68uc/image/upload/v1734830108/diwan-admin/file_1734830105275.jpg", "https://res.cloudinary.com/dd8lg68uc/image/upload/v1734830109/diwan-admin/file_1734830105289.jpg"],
+        "description": "SmartSpend is a robust Budget Tracker application designed to simplify personal finance management. Built using Next.js, TypeScript, Prisma, and Tailwind CSS.\n\nKey Features: Transaction Management, Category Insights, Historical Data, Interactive Visuals, Secure Authentication, Dynamic Dashboards, Custom Date Filtering, Elegant UI.\nTech Stack: Next.js, TypeScript, Prisma ORM, TanStack Query, Recharts, Clerk, Tailwind CSS.\nLive Preview: https://smartspend-budget.vercel.app/",
+        "client": "Diwan",
+        "projectCategory": ["Web Development", "Database Management"],
+        "tags": ["html", "javascript", "reactjs", "database"],
+        "livePreview": "https://smartspend-budget.vercel.app/",
+        "status": "publish"
+      },
+      {
+        "name": "Personal Portfolio",
+        "slug": "portfolio-develop-using-nextjs",
+        "images": ["https://res.cloudinary.com/dd8lg68uc/image/upload/v1730291184/diwan-admin/file_1730291181891.jpg", "https://res.cloudinary.com/dd8lg68uc/image/upload/v1730291188/diwan-admin/file_1730291181904.jpg", "https://res.cloudinary.com/dd8lg68uc/image/upload/v1730291188/diwan-admin/file_1730291181905.jpg", "https://res.cloudinary.com/dd8lg68uc/image/upload/v1730291189/diwan-admin/file_1730291181907.jpg", "https://res.cloudinary.com/dd8lg68uc/image/upload/v1730291189/diwan-admin/file_1730291181903.jpg"],
+        "description": "Personal Portfolio project built with Next.js, MongoDB, NextAuth, Cloudinary, Chart.js.\n\nBackend: Secure Authentication, Scalable Data Storage, Optimized Media Management, Real-Time Analytics, Modular Architecture.\nFrontend: Dynamic Routing, Blog Section with Interactive Features, SSG & SSR, Fully Responsive Design, Efficient State Management, CSS Modules, Engaging Data Visualizations, Smooth Transitions & Animations, Accessibility First.\nLearning Outcomes: Fast, user-centric applications, type safety, responsive design, performance optimization, interactive features.\nLive Demo: https://diwanportfolio.vercel.app",
+        "client": "Diwan Malla",
+        "projectCategory": ["Web Development", "UI/UX Design", "DevOps", "Database Management"],
+        "tags": ["javascript", "reactjs", "database"],
+        "livePreview": "https://diwanportfolio.vercel.app",
+        "status": "publish"
+      },
+      {
+        "name": "TalentTrek",
+        "slug": "talent-trek",
+        "images": ["https://res.cloudinary.com/dd8lg68uc/image/upload/v1730290620/diwan-admin/file_1730290618386.jpg", "https://res.cloudinary.com/dd8lg68uc/image/upload/v1730290650/diwan-admin/file_1730290646410.jpg", "https://res.cloudinary.com/dd8lg68uc/image/upload/v1730290651/diwan-admin/file_1730290646406.jpg", "https://res.cloudinary.com/dd8lg68uc/image/upload/v1730290653/diwan-admin/file_1730290646409.jpg", "https://res.cloudinary.com/dd8lg68uc/image/upload/v1730290653/diwan-admin/file_1730290646411.jpg", "https://res.cloudinary.com/dd8lg68uc/image/upload/v1730290653/diwan-admin/file_1730290646413.jpg"],
+        "description": "TalentTrek (Interns Store) is an innovative web application designed to connect ambitious students with outstanding internship opportunities. API-driven job listings, student profiles, advanced search & filters, real-time notifications, responsive web design.\nTech Stack: React, TypeScript (TSX), Tailwind CSS, API integration, UI/UX Design.\nLive Demo: https://talent-trek.vercel.app",
+        "client": "Assignment Project ",
+        "projectCategory": ["Web Development", "Mobile App Development", "UI/UX Design"],
+        "tags": ["html", "css", "javascript", "reactjs"],
+        "livePreview": "https://talent-trek.vercel.app",
+        "status": "publish"
+      }
+  ],
+  "skills": {
+    "frontend": {
+      "primary_expertise": [
+        "React 19",
+        "Next.js 15",
+        "TypeScript",
+        "JavaScript (ES6+)"
+      ],
+      "ui_frameworks": ["Tailwind CSS", "Material UI", "Bootstrap"],
+      "state_management": ["Redux", "React Context API", "Zustand"],
+      "other_frameworks": {
+        "angular": "Familiar with concepts, willing to learn (React specialist)",
+        "vue": "Basic understanding, transferable from React experience"
+      }
+    },
+    "backend": {
+      "primary": ["Node.js", "Express", "Python (Flask)"],
+      "apis": ["REST APIs", "API Integration", "JWT Authentication"],
+      "learning": {
+        "csharp": "Open to learning C# for the right opportunity",
+        "dotnet": "Familiar with .NET concepts through research, ready to upskill"
+      }
+    },
+    "databases": {
+      "production_experience": ["MongoDB", "PostgreSQL", "MySQL"],
+      "familiar_with": [
+        "SQL Server (similar to PostgreSQL/MySQL)",
+        "Redis (caching)"
+      ],
+      "orm_tools": ["Prisma", "Mongoose", "SQLAlchemy"]
+    },
+    "cloud_devops": {
+      "aws": [
+        "S3 (file storage)",
+        "EC2 (compute)",
+        "Lambda (serverless)",
+        "CloudFront (CDN)"
+      ],
+      "platforms": ["Vercel", "Netlify", "Heroku"],
+      "cicd": ["GitHub Actions", "GitLab CI", "Automated testing pipelines"],
+      "version_control": ["Git", "GitHub", "GitLab", "Branching strategies"]
+    },
+    "ui_ux_tools": [
+      "Figma",
+      "Adobe XD",
+      "Responsive Design",
+      "Accessibility (WCAG)",
+      "Design Systems"
+    ],
+    "testing": {
+      "frameworks": ["Jest", "React Testing Library", "Cypress (E2E)"],
+      "practices": [
+        "Unit testing",
+        "Integration testing",
+        "Test-driven development"
+      ]
+    },
+    "soft_skills": [
+      "Agile workflow (Scrum, Kanban)",
+      "UX research",
+      "Wireframing",
+      "Prototyping",
+      "Cross-functional collaboration",
+      "Technical mentoring",
+      "Code reviews",
+      "Documentation"
+    ],
+    "experience_levels": {
+      "expert": [
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Node.js",
+        "Material UI",
+        "Tailwind CSS"
+      ],
+      "advanced": ["PostgreSQL", "MongoDB", "AWS", "CI/CD", "REST APIs"],
+      "intermediate": ["Python", "Flask", "Redux", "Design Systems"],
+      "learning": ["C#", ".NET", "Angular", "System Architecture at scale"]
+    }
+  },
+  "education": {
+    "university": "Victoria University Sydney",
+    "degree": "Bachelor of Information Technology",
+    "graduation_year": 2025,
+    "location": "Sydney, Australia",
+    "bachelor_details": "passed HD 82% 6.67/7 GPA",
+    "masters": {
+      "university": "Sydney Met",
+      "degree": "Master of Information Technology",
+      "major": "Data Science",
+      "years": "2026-2028"
+    }
+  },
+  "career_goals": {
+    "current_level": "Mid-Level Full-Stack Developer (4+ years experience)",
+    "target_seniority": "Senior Developer or Technical Lead within 2-3 years",
+    "short_term": "Mid to Senior Full-Stack Developer role focusing on React/Next.js ecosystem, SaaS platforms, and AI-powered web applications",
+    "long_term": "Technical Lead, Engineering Manager, or Head of Engineering in an AI/ML driven SaaS company",
+    "learning_focus": [
+      "Advanced React & Next.js patterns (Server Components, Streaming)",
+      "AI/ML integration (LLMs, RAG systems, Vector databases)",
+      "System scalability and architecture (Microservices, Event-driven)",
+      "Team leadership and mentoring",
+      "Cloud architecture (AWS Advanced, Kubernetes)"
+    ],
+    "open_to_learning": {
+      "microsoft_stack": "Willing to learn C#/.NET if there's clear growth path and team support",
+      "new_frameworks": "Quick learner, can adapt to Angular, Vue, or other frameworks",
+      "specialized_domains": "Interested in AI/ML, DevOps, System Design"
+    },
+    "industries_interested": [
+      "SaaS",
+      "AI/ML",
+      "Enterprise solutions",
+      "FinTech",
+      "EdTech"
+    ],
+    "role_preferences": {
+      "ideal_roles": [
+        "Senior Full-Stack Developer",
+        "Technical Lead (React/Node.js)",
+        "AI Integration Engineer"
+      ],
+      "open_to": [
+        "Mid-Level Full-Stack roles with clear advancement path",
+        "Specialist Frontend roles (React/Next.js)"
+      ],
+      "not_interested": [
+        "Pure junior roles",
+        "Roles requiring complete stack pivot without support"
+      ]
+    }
+  },
+  "interview_prep": {
+    "behavioral_questions": [
+      "Describe a challenging project and how you overcame technical hurdles.",
+      "How do you prioritize tasks under tight deadlines?",
+      "Give an example of mentoring or helping a teammate improve."
+    ],
+    "technical_questions": [
+      "Explain your approach to building a full-stack SaaS platform.",
+      "How would you optimize React components for performance?",
+      "Describe integrating AI APIs like OpenAI into a production system."
+    ],
+    "situational_questions": [
+      "How would you respond to a critical bug affecting production?",
+      "How would you handle conflicting requirements from stakeholders?",
+      "Describe how you would implement a new feature with minimal disruption."
+    ]
+  },
+
+  "technology_adaptation": {
+    "framework_transitions": {
+      "react_to_angular": {
+        "transferable_skills": [
+          "Component-based architecture",
+          "TypeScript",
+          "RxJS concepts from Redux",
+          "Dependency injection patterns",
+          "Testing methodologies"
+        ],
+        "learning_approach": "1-2 months structured learning through Angular docs + building sample project",
+        "confidence": "High - similar architectural patterns, strong TypeScript foundation"
+      },
+      "nodejs_to_dotnet": {
+        "transferable_skills": [
+          "RESTful API design",
+          "Async/await patterns",
+          "Dependency injection",
+          "ORM concepts (Entity Framework similar to Prisma)",
+          "MVC architecture"
+        ],
+        "learning_approach": "3-4 months with mentorship and project-based learning",
+        "confidence": "Medium-High - strong backend fundamentals, need C# syntax and .NET ecosystem familiarity"
+      },
+      "postgres_to_sqlserver": {
+        "transferable_skills": [
+          "SQL fundamentals",
+          "Query optimization",
+          "Database design",
+          "Transactions and ACID",
+          "Indexing strategies"
+        ],
+        "learning_approach": "2-3 weeks for core differences (T-SQL vs PostgreSQL syntax)",
+        "confidence": "Very High - 90% transferable, mainly syntax differences"
+      }
+    },
+    "learning_track_record": {
+      "fast_adoptions": [
+        "Next.js 13 App Router: Production-ready in 2 weeks from zero knowledge",
+        "TypeScript: Became team expert in 6 weeks, created internal style guide",
+        "OpenAI API + RAG: Built production system in 3 weeks for BrainiX",
+        "Material UI: Mastered in 4 weeks, created component library"
+      ],
+      "methodology": "Learn by building real projects, read official docs thoroughly, engage with community, teach others to solidify knowledge"
+    },
+    "willingness_statement": "I'm a fast learner with proven track record of technology adoption. While my core expertise is React/Next.js/Node.js, I'm highly motivated to learn C#/.NET/Angular for the right role with mentorship support. I typically reach productivity in new frameworks within 4-6 weeks."
+  },
+
+  "professional_development": {
+    "certifications": [
+      {
+        "name": "IBM Full Stack Developer",
+        "issuer": "IBM",
+        "year": 2024,
+        "skills": ["React", "Node.js", "Express", "MongoDB", "REST APIs"]
+      },
+      {
+        "name": "Meta Front-End Specialization",
+        "issuer": "Meta",
+        "year": " 2024",
+        "skills": [
+          "React",
+          "JavaScript",
+          "HTML/CSS",
+          "UI/UX",
+          "Responsive Design"
+        ]
+      }
+    ],
+    "recent_learning": [
+      "Advanced React patterns (Server Components, Suspense, Streaming)",
+      "Next.js 15 features (App Router, Server Actions, Partial Prerendering)",
+      "AI API integrations (OpenAI, Groq, Vector databases)",
+      "RAG systems with Upstash Vector",
+      "TypeScript advanced types and patterns"
+    ],
+    "currently_learning": {
+      "primary": "AI/ML integration patterns and LangChain framework",
+      "secondary": "System design and scalable architecture patterns",
+      "considering": "C#/.NET fundamentals for potential role transitions"
+    },
+    "conferences_attended": [
+      "PyCon Australia 2024 - AI/ML track",
+      "AWS re:Invent 2023 - Serverless and AI sessions",
+      "React Summit 2023 (online) - Next.js 14 features"
+    ],
+    "publications": [
+      "Blog: Building Production RAG Systems with Upstash Vector",
+      "Medium: Optimizing Next.js Performance for Large-Scale Applications",
+      "Dev.to: TypeScript Best Practices for React Developers"
+    ],
+    "open_source": [
+      "Contributor to FastAPI documentation (Python async patterns)",
+      "Maintainer of internal Python utility library",
+      "Active contributor to React ecosystem discussions on GitHub"
+    ],
+    "learning_agility": {
+      "example_1": "Learned Next.js 13 App Router and migrated production app in 2 weeks",
+      "example_2": "Integrated OpenAI APIs and built RAG system in 3 weeks for BrainiX project",
+      "example_3": "Self-taught Python Flask and deployed production API in 4 weeks"
+    }
+  },
+
+  "content_chunks": [
+    {
+      "id": "personal-0",
+      "title": "Name and Identity",
+      "type": "personal",
+      "content": "My name is Diwan Malla. When you ask 'what is your name?' or 'who are you?', the answer is Diwan Malla. I am Diwan Malla, a Full-Stack Developer based in Sydney, Australia. I'm passionate about creating high-performance, intuitive user interfaces and AI-powered web applications. Remember: my name is Diwan Malla.",
+      "metadata": {
+        "category": "identity",
+        "tags": ["name", "Diwan Malla", "identity", "who", "developer"]
+      }
+    },
+    {
+      "id": "personal-1",
+      "title": "Personal Summary",
+      "type": "personal",
+      "content": "Full Stack developer specializing in React.js, Material UI, and UX-driven design. Certified IBM Full Stack Development and Meta Front-End Specialization. Experienced in building responsive web applications, improving UI performance, and collaborating with cross-functional teams to deliver exceptional digital experiences.",
+      "metadata": {
+        "category": "summary",
+        "tags": ["React", "Material UI", "UX", "Full Stack"]
+      }
+    },
+    {
+      "id": "experience-level",
+      "title": "Experience Level and Career Stage",
+      "type": "career",
+      "content": "Mid-Level Full-Stack Developer with 4+ years professional experience. Appropriate for Mid-Level to Senior Developer roles, not junior positions. Salary expectations: $95k-$115k AUD for mid-level, $115k-$135k for senior roles. Have led teams, implemented CI/CD, and delivered multiple production applications.",
+      "metadata": {
+        "category": "career",
+        "tags": ["mid-level", "senior", "experience", "salary", "4 years"]
+      }
+    },
+    {
+      "id": "salary-location",
+      "title": "Salary and Location Preferences",
+      "type": "compensation",
+      "content": "Current salary: $85k-$95k AUD. Expectations: $95k-$115k for mid-level, $115k-$135k for senior roles. Based in Sydney, open to remote work, hybrid, or relocation within Australia (Sydney, Newcastle, Central Coast, Brisbane, Gold Coast, Canberra). International student, immediate to work, happy to volunteer. 3+ years remote experience. Available to start immediately. Open to 25% interstate travel.",
+      "metadata": {
+        "category": "compensation",
+        "tags": [
+          "salary",
+          "Sydney",
+          "remote",
+          "relocation",
+          "Australia",
+          "international student"
+        ]
+      }
+    },
+    {
+      "id": "tech-stack-primary",
+      "title": "Primary Technology Stack",
+      "type": "skills",
+      "content": "Expert in React 19, Next.js 15, TypeScript, JavaScript ES6+, Node.js, Express. Advanced in PostgreSQL, MongoDB, AWS, Material UI, Tailwind CSS. Production experience with Python Flask, REST APIs, CI/CD, GitHub Actions. Strong UI/UX with Figma, responsive design, accessibility.",
+      "metadata": {
+        "category": "skills",
+        "tags": ["React", "Next.js", "TypeScript", "Node.js", "expert"]
+      }
+    },
+    {
+      "id": "tech-stack-learning",
+      "title": "Technology Adaptation and Learning",
+      "type": "skills",
+      "content": "Open to learning C#, .NET, and Angular for the right role with mentorship. SQL Server knowledge transferable from PostgreSQL/MySQL experience. Fast learner: mastered Next.js 13 in 2 weeks, TypeScript in 6 weeks, built RAG system in 3 weeks. Proven track record of rapid technology adoption. Typically productive in new frameworks within 4-6 weeks.",
+      "metadata": {
+        "category": "skills",
+        "tags": ["learning", "C#", ".NET", "Angular", "SQL Server", "adaptable"]
+      }
+    },
+    {
+      "id": "exp-1",
+      "title": "Barnamala Tech Experience",
+      "type": "experience",
+      "content": "Full-Stack Developer at Barnamala Tech (Feb 2025-Present). Improved UI load speed by 35%, user satisfaction by 28%, reduced component development time by 50% through reusable component library. Automated deployment reducing time by 40% (4h to 2.4h), eliminated 95% deployment bugs. Led team of 2 developers, mentored on React best practices. Skills: Next.js 15, React 19, TypeScript, Material UI, Python Flask, MongoDB, AWS, GitHub Actions, CI/CD.",
+      "metadata": {
+        "category": "work",
+        "tags": ["Next.js", "React", "CI/CD", "AWS", "leadership", "current"]
+      }
+    },
+    {
+      "id": "exp-2",
+      "title": "Hamro Chautari Experience",
+      "type": "experience",
+      "content": "Junior Web Developer at Hamro Chautari (April 2023-Nov 2024). Boosted engagement by 25%, reduced load time by 40%, improved Lighthouse score from 65 to 92. Optimized database queries (3s to 0.5s response time), implemented Redis caching. Built design system for consistency. Skills: React 18, Next.js 14, Tailwind CSS, Node.js, Express, PostgreSQL, AWS, Vercel, Redis.",
+      "metadata": {
+        "category": "work",
+        "tags": [
+          "React",
+          "Next.js",
+          "Tailwind CSS",
+          "performance",
+          "database optimization"
+        ]
+      }
+    },
+    {
+      "id": "exp-3",
+      "title": "Bihani Tech Experience",
+      "type": "experience",
+      "content": "Front-End Web Developer at Bihani Tech (Sep 2021-Aug 2022). Improved UI satisfaction by 35% with React.js and Bootstrap. Built responsive web applications and customized WordPress sites. Skills: JavaScript, React.js, Bootstrap, WordPress, REST APIs.",
+      "metadata": {
+        "category": "work",
+        "tags": ["React.js", "Bootstrap", "WordPress"]
+      }
+    },
+    {
+      "id": "exp-4",
+      "title": "Adira Tech Internship",
+      "type": "experience",
+      "content": "Web Developer Intern at Adira Tech (Nov 2020-Jul 2021). Debugged UI issues and supported Agile development. Built internal projects with JavaScript and Bootstrap. Gained hands-on experience with version control and collaborative development.",
+      "metadata": {
+        "category": "internship",
+        "tags": ["JavaScript", "Agile", "internship"]
+      }
+    },
+    {
+      "id": "proj-1",
+      "title": "Job Tracker Project",
+      "type": "project",
+      "content": "Built full-stack job tracking platform with analytics dashboard and secure document management (Oct 2025). Impact: 10+ active users, streamlined resume/cover letter management. Technologies: Next.js 15, PostgreSQL, Vercel Blob Storage, React, TypeScript.",
+      "metadata": {
+        "category": "project",
+        "tags": ["Next.js", "PostgreSQL", "Vercel", "full-stack"]
+      }
+    },
+    {
+      "id": "proj-2",
+      "title": "PDFly Project",
+      "type": "project",
+      "content": "Developed PDF APIs for secure processing and file encryption (Aug-Oct 2025). Impact: 100+ documents processed daily, improved user satisfaction by 45%. Technologies: Python, React, API development.",
+      "metadata": {
+        "category": "project",
+        "tags": ["Python", "React", "API", "security"]
+      }
+    },
+    {
+      "id": "proj-3",
+      "title": "SangeetX Project",
+      "type": "project",
+      "content": "Built music streaming platform with admin dashboard (July-Sep 2025). Impact: 50+ users, reduced admin time by 60%, improved media loading speed by 50%. Technologies: Next.js, TypeScript, Cloudinary, streaming optimization.",
+      "metadata": {
+        "category": "project",
+        "tags": ["Next.js", "TypeScript", "Cloudinary", "streaming"]
+      }
+    },
+    {
+      "id": "proj-4",
+      "title": "BrainiX Project - AI Leadership",
+      "type": "project",
+      "content": "Led 3-member development team building AI-powered LMS with real-time chat and Stripe payments (Feb-June 2025). Impact: 300% engagement increase, 94.7% course completion rate. Integrated OpenAI APIs, Pusher real-time features. Demonstrated technical leadership and AI integration expertise. Technologies: Next.js, React, OpenAI APIs, Pusher, Stripe API.",
+      "metadata": {
+        "category": "project",
+        "tags": ["Next.js", "OpenAI", "Stripe", "leadership", "AI", "team lead"]
+      }
+    },
+    {
+      "id": "skills-1",
+      "title": "Technical Skills Overview",
+      "type": "skills",
+      "content": "Frontend Expert: React 19, Next.js 15, TypeScript, JavaScript ES6+, Material UI, Tailwind CSS, Redux. Backend Advanced: Node.js, Express, Python Flask, REST APIs. Databases: MongoDB, PostgreSQL, MySQL, Redis. Cloud/DevOps: AWS (S3, EC2, Lambda), GitHub Actions, CI/CD, Docker. UI/UX: Figma, Adobe XD, Responsive Design, Accessibility WCAG, Design Systems. Testing: Jest, React Testing Library, Cypress.",
+      "metadata": {
+        "category": "skills",
+        "tags": ["React", "Node.js", "AWS", "Figma", "TypeScript"]
+      }
+    },
+    {
+      "id": "skills-2",
+      "title": "Soft Skills and Leadership",
+      "type": "skills",
+      "content": "Agile workflow (Scrum, Kanban), UX research, wireframing, prototyping, cross-functional collaboration, technical mentoring, code reviews, documentation. Led teams of 2-3 developers, mentored junior developers on React and TypeScript best practices. Strong communication and stakeholder management.",
+      "metadata": {
+        "category": "skills",
+        "tags": ["Agile", "Collaboration", "UX", "mentoring", "leadership"]
+      }
+    },
+    {
+      "id": "edu-1",
+      "title": "Education",
+      "type": "education",
+      "content": "Bachelor of Information Technology, Victoria University Sydney, 2025, Sydney, Australia. Passed HD 82% 6.67/7 GPA. Certifications: IBM Full Stack Developer (2024), Meta Front-End Specialization (2023, 2024). Master of Information Technology, Sydney Met, major Data Science, 2026-2028.",
+      "metadata": {
+        "category": "education",
+        "tags": [
+          "Bachelor",
+          "IT",
+          "Victoria University",
+          "IBM",
+          "Meta",
+          "Sydney Met",
+          "Master",
+          "Data Science"
+        ]
+      }
+    },
+    {
+      "id": "career-1",
+      "title": "Career Goals and Role Preferences",
+      "type": "career",
+      "content": "Current level: Mid-Level Full-Stack Developer (4+ years). Target: Senior Developer or Technical Lead within 2-3 years. Ideal roles: Senior Full-Stack Developer, Technical Lead (React/Node.js), AI Integration Engineer. Open to mid-level roles with clear advancement path. NOT interested in junior roles. Focused on React/Next.js ecosystem, SaaS platforms, AI/ML integration. Industries: SaaS, AI/ML, Enterprise, FinTech, EdTech.",
+      "metadata": {
+        "category": "career",
+        "tags": [
+          "SaaS",
+          "AI/ML",
+          "Leadership",
+          "senior",
+          "mid-level",
+          "React ecosystem"
+        ]
+      }
+    },
+    {
+      "id": "learning-agility",
+      "title": "Learning Agility and Technology Adoption",
+      "type": "professional_development",
+      "content": "Fast learner with proven track record: Next.js 13 App Router production-ready in 2 weeks, TypeScript team expert in 6 weeks, OpenAI RAG system in 3 weeks, Material UI mastery in 4 weeks. Methodology: learn by building, thorough documentation reading, community engagement, teaching others. Currently learning: AI/ML patterns, LangChain, system design. Open to C#/.NET/Angular with mentorship support.",
+      "metadata": {
+        "category": "learning",
+        "tags": ["fast learner", "adaptable", "self-taught", "AI/ML"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "digital-twin": {
+      "command": "/Users/diwanmalla/Desktop/digital-twin-worshop/venv/bin/python",
+      "args": [
+        "/Users/diwanmalla/Desktop/digital-twin-worshop/src/digital_twin_mcp_server.py"
+      ]
+    }
+    ,
+    "TestSprite": {
+      "command": "npx",
+      "args": [
+        "@testsprite/testsprite-mcp@latest"
+      ],
+      "env": {
+        // Use an environment variable placeholder. Do NOT commit the real API key here.
+        "API_KEY": "${TESTSPRITE_API_KEY}"
+      }
+    }
+  }
+}

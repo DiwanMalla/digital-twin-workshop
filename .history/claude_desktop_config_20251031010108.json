@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "digital-twin": {
+      "command": "/Users/diwanmalla/Desktop/digital-twin-worshop/venv/bin/python",
+      "args": [
+        "/Users/diwanmalla/Desktop/digital-twin-worshop/src/digital_twin_mcp_server.py"
+      ]
+    }
+    ,
+    "TestSprite": {
+      "command": "npx",
+      "args": [
+        "@testsprite/testsprite-mcp@latest"
+      ],
+      "env": {
+        "API_KEY": "${TESTSPRITE_API_KEY}"
+      }
+    }
+  }
+}
