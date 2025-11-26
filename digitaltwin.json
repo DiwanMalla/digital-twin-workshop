@@ -932,6 +932,115 @@
         "category": "learning",
         "tags": ["fast learner", "adaptable", "self-taught", "AI/ML"]
       }
+    },
+    {
+      "id": "all-projects-list",
+      "title": "Complete Projects Portfolio List",
+      "type": "project",
+      "content": "I have built 16 projects in my portfolio: 1) Job Tracker - Full-stack job application management system with analytics dashboard (Next.js 15, PostgreSQL, Vercel). 2) PDFly - Professional PDF processing platform with secure APIs (Python, React). 3) SangeetX - Music streaming platform with admin dashboard (Next.js, TypeScript, Cloudinary). 4) BrainiX - AI-powered LMS with real-time chat and Stripe payments, led 3-member team (Next.js, OpenAI, Pusher). 5) GenZ Memories - Social video platform for Gen Z activism documentation (Next.js 15, Socket.io, FFmpeg). 6) HTML Editor Pro - Modern HTML/CSS/JS editor with real-time preview (Next.js, Monaco Editor). 7) Markdown to PDF Converter - Markdown editor with PDF export (Next.js, Marked.js). 8) ChatSphere - Real-time chat app with MERN stack (MongoDB, Express, React, Node.js, Socket.io). 9) Product Store - Full-stack e-commerce store (React, Node.js, MongoDB). 10) My Weather App (Mausam) - Real-time weather app with charts (Next.js, TanStack Query, Recharts). 11) SmartSpend - Budget tracker for personal finance (Next.js, Prisma, Clerk). 12) Personal Portfolio - Portfolio site with admin dashboard (Next.js, MongoDB, NextAuth). 13) TalentTrek - Web app connecting students with internships (React, TypeScript, Tailwind CSS). 14) Digital Twin AI Assistant - AI-powered professional profile chatbot using RAG (Next.js, Upstash Vector, Groq). 15) Component Library - Reusable React/Material UI component library with Storybook. 16) CI/CD Pipeline System - Automated deployment pipelines with GitHub Actions.",
+      "metadata": {
+        "category": "projects",
+        "tags": [
+          "projects",
+          "portfolio",
+          "all projects",
+          "list",
+          "complete",
+          "full list",
+          "how many",
+          "count"
+        ]
+      }
+    },
+    {
+      "id": "proj-5",
+      "title": "GenZ Memories Project",
+      "type": "project",
+      "content": "GenZ Memories is a modern social media platform to preserve Gen Z activism through short-form videos. Built with Next.js 15, TypeScript, Prisma, Socket.io for real-time features. Features: video upload, engagement system, discovery feed, custom profiles, admin dashboard, real-time notifications and chat. Live at genz-memories.vercel.app",
+      "metadata": {
+        "category": "project",
+        "tags": ["Next.js", "TypeScript", "Socket.io", "social media", "video"]
+      }
+    },
+    {
+      "id": "proj-6",
+      "title": "HTML Editor Pro Project",
+      "type": "project",
+      "content": "HTML Editor Pro is a modern HTML, CSS, and JavaScript editor with real-time preview, syntax highlighting, Monaco Editor integration. Features dark/light theme, responsive design, fullscreen mode, export functionality. Built with Next.js 15, React 19, TypeScript, Tailwind CSS, Framer Motion. Live at html-editor-pro-six.vercel.app",
+      "metadata": {
+        "category": "project",
+        "tags": ["Next.js", "Monaco Editor", "TypeScript", "code editor"]
+      }
+    },
+    {
+      "id": "proj-7",
+      "title": "Markdown to PDF Converter Project",
+      "type": "project",
+      "content": "Markdown to PDF Converter with live preview, GitHub-style rendering, PDF export, Monaco Editor. Built with Next.js 15, React 19, TypeScript, Marked.js, DOMPurify, html2pdf.js. Features smart filename generation, responsive design. Live at markdown-to-pdf-preview.vercel.app",
+      "metadata": {
+        "category": "project",
+        "tags": ["Next.js", "Markdown", "PDF", "converter"]
+      }
+    },
+    {
+      "id": "proj-8",
+      "title": "ChatSphere Project",
+      "type": "project",
+      "content": "ChatSphere is a real-time chat application built with MERN stack (MongoDB, Express, React, Node.js) and Socket.io. Features: real-time messaging, user authentication with JWT, one-on-one and group chats, media sharing, online/offline status. Live at chatsphere-p8zu.onrender.com",
+      "metadata": {
+        "category": "project",
+        "tags": ["MERN", "Socket.io", "chat", "real-time", "MongoDB"]
+      }
+    },
+    {
+      "id": "proj-9",
+      "title": "Product Store Project",
+      "type": "project",
+      "content": "Product Store is a full-stack e-commerce store built with pnpm, Vite, React frontend, Node.js backend, MongoDB database. Demonstrates core full-stack development skills and typical e-commerce features. Uses Zustand for state management. Live at product-store-m4ol.onrender.com",
+      "metadata": {
+        "category": "project",
+        "tags": ["React", "Node.js", "MongoDB", "e-commerce", "Zustand"]
+      }
+    },
+    {
+      "id": "proj-10",
+      "title": "Weather App Mausam Project",
+      "type": "project",
+      "content": "My Weather App (Mausam) is a real-time weather application with interactive charts, dark/light mode, search history, city favorites. Built with Next.js, React, TypeScript, TanStack Query, Shadcn UI, Recharts, Tailwind CSS. Live at mausam-weather.vercel.app",
+      "metadata": {
+        "category": "project",
+        "tags": ["Next.js", "weather", "Recharts", "TanStack Query"]
+      }
+    },
+    {
+      "id": "proj-11",
+      "title": "SmartSpend Budget Tracker Project",
+      "type": "project",
+      "content": "SmartSpend is a budget tracker for personal finance management. Features: transaction management, category insights, historical data, interactive visualizations with Recharts, secure authentication with Clerk. Built with Next.js, TypeScript, Prisma ORM, TanStack Query. Live at smartspend-budget.vercel.app",
+      "metadata": {
+        "category": "project",
+        "tags": ["Next.js", "Prisma", "finance", "budget", "Clerk"]
+      }
+    },
+    {
+      "id": "proj-12",
+      "title": "Personal Portfolio Project",
+      "type": "project",
+      "content": "Personal Portfolio built with Next.js, MongoDB, NextAuth, Cloudinary, Chart.js. Features: secure authentication, scalable data storage, blog section with interactive features, SSG & SSR, responsive design, data visualizations, smooth animations. Live at diwanportfolio.vercel.app",
+      "metadata": {
+        "category": "project",
+        "tags": ["Next.js", "MongoDB", "portfolio", "NextAuth"]
+      }
+    },
+    {
+      "id": "proj-13",
+      "title": "TalentTrek Project",
+      "type": "project",
+      "content": "TalentTrek (Interns Store) connects students with internship opportunities. Features: API-driven job listings, student profiles, advanced search and filters, real-time notifications, responsive design. Built with React, TypeScript, Tailwind CSS. Live at talent-trek.vercel.app",
+      "metadata": {
+        "category": "project",
+        "tags": ["React", "TypeScript", "internship", "job board"]
+      }
     }
   ]
 }
